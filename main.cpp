@@ -74,6 +74,7 @@ int main(int argc, char **argv){
 
     programName = "main";
     fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    //fileName = "test3.txt";
     minSupport = 0.4;
     minConfidence = 0.8;
     displayOption = 'a';
@@ -221,7 +222,7 @@ typedef struct{
     }
 
     cout << "size of frequent items is: " << onefrequentItemSet.size() -1 << endl;
-   // cout << "qualified items are: ";
+    cout << "qualified items are: ";
 
 
     for (int i=1; i<= onefrequentItemSet.size() -1; i++)
