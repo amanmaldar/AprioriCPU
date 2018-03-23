@@ -18,7 +18,7 @@ using namespace std;
 int numItems=0;
 int numTransactions=1;
 int maxItemsetSize=0;
-double minSupp = 0.07;
+double minSupp = 0.001;
 
 double minSupport;
 double minConfidence;
@@ -272,7 +272,9 @@ void initialize(){
                                       std::back_inserter(vec3));
 
                 //if (1) {
+                int test2=0;
                 if (vec3.size() >= minSupp) {
+                    test2++;
                     cout << "pair is : " << it->first << " " << it->second << " " << it1->second;
                     cout << " Frequency: " << vec3.size();;
                     cout << " Common TIDs: ";
@@ -280,7 +282,7 @@ void initialize(){
                     cout << endl;
                 }
                 //pairCount.insert(make_pair(it->first,it->second),vec2.size());
-
+                cout << "3 pairs: " << test2;
                 vec2.clear();
                 vec3.clear();
 
