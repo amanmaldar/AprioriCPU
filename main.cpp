@@ -73,8 +73,8 @@ string to_string_with_precision(const T value){
 int main(int argc, char **argv){
 
     programName = "main";
-    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    //fileName = "test3.txt";
+    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    fileName = "test3.txt";
     minSupport = 0.4;
     minConfidence = 0.8;
     displayOption = 'a';
@@ -205,10 +205,6 @@ typedef struct{
     // Following code generates single items which have support greater than min_sup
     // compare the occurance of the object against min support
     minSupp=round(minSupport * numTransactions);
-
-
-
-
 
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
