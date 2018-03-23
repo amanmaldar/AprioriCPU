@@ -136,7 +136,7 @@ void initialize(){
 
     }
     // WE ARE DONE WITH PARSING FILE ***************works fine till here
-    return ;
+    //return ;
 
     // Following code generates single items which have support greater than min_sup
     // compare the occurance of the object against min support
@@ -147,7 +147,7 @@ void initialize(){
     for (int i=1; i<= 1000; i++)
     {
         if(item_count[i] >= minSupp){
-            //cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
+            cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
         }
 
