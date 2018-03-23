@@ -123,7 +123,7 @@ void initialize(){
     string line;
     //map <int,int> item_count;
     vector <int> item_count;
-    for (int i = 0; i < 1000; ++i){
+    for (int i = 0; i <= 1000; ++i){
         item_count.push_back(0) ;
     }
     vector <vector <int>> itemToTID;    //each vector relates to single TID
@@ -147,20 +147,12 @@ typedef struct{
  */
 
     // Create candidates of size 1 and fill it while reading the transaction file.
-    lk c;
-    c.k=1;
 
     // FILE PARSING BEGINS HERE
     // C IS GLOBAL MAP FOR STORING <itemNumber, number of occurances>
     // [n_set set] and [transactions vector] are globally declared for entire file
     while (getline(infile,line)){
          istringstream iss(line);    //iss refers to each element in line
-        //std::cout << "lines are: " << line << std::endl;
-
-        // following two are local for single transaction line
-        //set<int> transaction;   // point to each entry in a single transaction
-
-        //set<int> n_set;         // each and every entry from single line
 
         m=0;
 
@@ -229,7 +221,7 @@ typedef struct{
     }
 
     cout << "size of frequent items is: " << onefrequentItemSet.size() -1 << endl;
-    cout << "qualified items are: ";
+   // cout << "qualified items are: ";
 
 
     for (int i=1; i<= onefrequentItemSet.size() -1; i++)
