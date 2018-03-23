@@ -122,9 +122,8 @@ void initialize(){
         }
     }*/
 
-    //cout << "checking size: " << itemToTID[100].size() << endl;
 
-    /*for (int i = 0 ;i < 1000; i ++)
+    for (int i = 0 ;i < 1000; i ++)
     {
         //cout << "checking size: " << itemToTID.at(i).size() << endl;
         if (itemToTID[i].size() != 1) {
@@ -135,9 +134,9 @@ void initialize(){
             cout << endl;
         }
 
-    }*/
+    }
     // WE ARE DONE WITH PARSING FILE
-    //return ;
+    return ;
 
     // Following code generates single items which have support greater than min_sup
     // compare the occurance of the object against min support
@@ -164,7 +163,7 @@ void initialize(){
     }
     cout << endl;
 
-    return;
+    //return;
     // make a pair of frequest items
 
     typedef struct{
