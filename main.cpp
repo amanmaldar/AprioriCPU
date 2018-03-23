@@ -76,14 +76,14 @@ void initialize(){
     vector <vector <int>> itemToTID;    //each vector relates to single TID
     //each vector keeps track of the transactions number in which particular TID is present
     // used later to calculate the count of pair
- /*
+
   vector <int> tmp;
     tmp.push_back(0);
     for (int i = 1; i <= 1000; ++i){
         itemToTID.push_back(tmp) ;
     }
 
-    */
+
 
     int n;
     int m;
@@ -100,7 +100,7 @@ void initialize(){
             // m captures the number of items in one transaction (one line of file).
             m +=1;
 
-           ///// itemToTID.at(n).push_back(numTransactions);
+            itemToTID.at(n).push_back(numTransactions);
             // these vectors would be automatically sorted and hence we can use set_intersection later.
 
         }
