@@ -42,7 +42,7 @@ int main(int argc, char **argv){
     programName = "main";
     //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
     fileName = "test3.txt";
-    minSupp = 0.4;
+    minSupp = 0.07;
     minConfidence = 0.8;
     displayOption = 'a';
 
