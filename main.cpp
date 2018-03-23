@@ -27,6 +27,7 @@ int number_of_strong_rules=0;
 int one_freq_itemset=0;
 int two_freq_itemset=0;
 int three_freq_itemset=0;
+
 vector<set<int>> transactions;
 
 
@@ -45,9 +46,8 @@ int main(int argc, char **argv){
     programName = "main";
     fileName = "D:\\Github Programs\\Apriori\\test3.txt";
     //fileName = "test3.txt";
-    //minSupp = 0.07;
-    minConfidence = 0.8;
-    displayOption = 'a';
+//    minConfidence = 0.8;
+   // displayOption = 'a';
 
     t1=clock();
 
@@ -71,16 +71,20 @@ void initialize(){
 
     ifstream infile(fileName);
     string line;
-    //map <int,int> item_count;
-    vector <int> item_count;
+
+    // itemIDcount is used to store number of times particular itemID appears in dataset.
+    // It is used to determine support for single elements.
+    vector <int> itemIDcount;
     for (int i = 0; i <= 1000; ++i){
-        item_count.push_back(0) ;
+        itemIDcount.push_back(0) ;
     }
-    vector <vector <int>> itemToTID;    //each vector relates to single TID
-    //each vector keeps track of the transactions number in which particular TID is present
+
+    // A single vector is associated with every itemID.
+    // That vector stores the TID [Transaction ID] in which particular itemID appears.
+    vector <vector <int>> itemToTID;
     // used later to calculate the count of pair
 
-  vector <int> tmp;
+    vector <int> tmp;
     tmp.push_back(0);
     for (int i = 1; i <= 1000; ++i){
         itemToTID.push_back(tmp) ;
@@ -92,14 +96,14 @@ void initialize(){
     int m;
 
     while (getline(infile,line)){
-         istringstream iss(line);    //iss refers to each element in line
-        //std::cout << "lines are: " << line << std::endl;
+         istringstream iss(line);       //iss refers to each element in line
+        //cout << "Transactions are: " << line << endl;
         m=0;
 
-        while( iss >> n ){      // work on a every entry in sible line
+        while( iss >> n ){              // work on a every single itemID on transaction.
 
 
-            item_count[n] +=1;
+            itemIDcount[n] +=1;
             // m captures the number of items in one transaction (one line of file).
             m +=1;
 
@@ -155,7 +159,7 @@ void initialize(){
     for (int i=1; i<= 1000; i++)
     {
        // cout  << "minSupport" << minSupport << " item count: " << item_count[i] << endl;
-        if(item_count[i] >= minSupport){
+        if(itemIDcount[i] >= minSupport){
            //cout  << "minSupport" << minSupport << endl;
       //imp       //cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
