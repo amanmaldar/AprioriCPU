@@ -141,8 +141,10 @@ void initialize(){
 
     // Following code generates single items which have support greater than min_sup
     // compare the occurance of the object against min support
-    minSupport=round(minSupp * numTransactions);
 
+    minSupport=round(minSupp * numTransactions);
+    cout << "fuck: " << minSupport << endl;
+    return;
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
     for (int i=1; i<= 1000; i++)
