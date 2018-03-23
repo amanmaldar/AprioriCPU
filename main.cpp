@@ -140,13 +140,13 @@ void initialize(){
 
     // Following code generates single items which have support greater than min_sup
     // compare the occurance of the object against min support
-    minSupp=round(minSupport * numTransactions);
+    minSupport=round(minSupp * numTransactions);
 
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
     for (int i=1; i<= 1000; i++)
     {
-        if(item_count[i] >= minSupp){
+        if(item_count[i] >= minSupport){
             cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
         }
