@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Github Programs/Apriori/main.cpp
+iostream
+-
+stdlib.h
+-
+fstream
+-
+string
+-
+sstream
+-
+time.h
+-
+math.h
+-
+vector
+-
+algorithm
+-
+set
+-
+map
+-
+unordered_set
+-
+iomanip
+-
+typeinfo
+-
+
