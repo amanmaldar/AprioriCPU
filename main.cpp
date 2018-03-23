@@ -18,7 +18,7 @@ using namespace std;
 int numItems=0;
 int numTransactions=1;
 int maxItemsetSize=0;
-int minSupp = 0.07;
+double minSupp = 0.07;
 
 double minSupport;
 double minConfidence;
@@ -143,8 +143,8 @@ void initialize(){
     // compare the occurance of the object against min support
 
     minSupport=round(minSupp * numTransactions);
-    cout << "fuck: " << minSupport << endl;
-    return;
+    cout << "aabbccdd: " << minSupport << " " << numTransactions << " " << minSupp << endl;
+    //return;
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
     for (int i=1; i<= 1000; i++)
