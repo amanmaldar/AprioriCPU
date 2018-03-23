@@ -122,7 +122,7 @@ void initialize(){
         }
     }*/
 
-
+/*
     for (int i = 0 ;i < 1000; i ++)
     {
         //cout << "checking size: " << itemToTID.at(i).size() << endl;
@@ -134,7 +134,7 @@ void initialize(){
             cout << endl;
         }
 
-    }
+    }*/
     // WE ARE DONE WITH PARSING FILE ***************works fine till here
     //return ;
 
@@ -163,7 +163,7 @@ void initialize(){
     }
     cout << endl;
 
-    //return;
+    return;
     // make a pair of frequest items
 
     typedef struct{
