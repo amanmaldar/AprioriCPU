@@ -114,6 +114,7 @@ void initialize(){
     }
 
     numTransactions -=1; //originally initalized with 1 to push at location 1 in vectors
+    //cout << "kjsghdfkjsd" << numTransactions << endl;
     /*
     for(int i=0;i<1000;i++)
     {
@@ -147,7 +148,8 @@ void initialize(){
     for (int i=1; i<= 1000; i++)
     {
         if(item_count[i] >= minSupport){
-            cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
+           cout  << "minSupport" << minSupport << endl;
+            // cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
         }
 
