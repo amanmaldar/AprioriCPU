@@ -143,13 +143,13 @@ void initialize(){
     // compare the occurance of the object against min support
 
     minSupport=round(minSupp * numTransactions);
-    cout << "aabbccdd: " << minSupport << " " << numTransactions << " " << minSupp << endl;
+   // cout << "aabbccdd: " << minSupport << " " << numTransactions << " " << minSupp << endl;
     //return;
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
     for (int i=1; i<= 1000; i++)
     {
-        cout  << "minSupport" << minSupport << " item count: " << item_count[i] << endl;
+       // cout  << "minSupport" << minSupport << " item count: " << item_count[i] << endl;
         if(item_count[i] >= minSupport){
            //cout  << "minSupport" << minSupport << endl;
             // cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
