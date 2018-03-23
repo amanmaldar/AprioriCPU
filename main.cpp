@@ -40,8 +40,8 @@ void initialize();
 int main(int argc, char **argv){
 
     programName = "main";
-    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    //fileName = "test3.txt";
+    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    fileName = "test3.txt";
     minSupport = 0.4;
     minConfidence = 0.8;
     displayOption = 'a';
