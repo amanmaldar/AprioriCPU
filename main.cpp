@@ -146,6 +146,7 @@ void initialize(){
     onefrequentItemSet.push_back(0);
     for (int i=1; i<= 1000; i++)
     {
+        cout << "test 1" << item_count[i] << " " ;
         if(item_count[i] >= minSupp){
             cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
