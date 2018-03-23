@@ -236,7 +236,10 @@ void initialize(){
     for(it1 = struct_pairOfTwo.filteredSetofPairOfTwo.begin(); it1 != struct_pairOfTwo.filteredSetofPairOfTwo.end(); it1++){
         cout << "Filtered Pair is : (" << it1->first << "," << it1->second << ")" << endl;
     }
-    return;
+
+    // works fine till here **********
+
+   // return;
 
     /*cout << "numTransactions is: " << numTransactions << endl;
     cout << "support is: " << minSupp << endl; */
