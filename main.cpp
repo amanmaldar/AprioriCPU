@@ -18,7 +18,7 @@ using namespace std;
 int numItems=0;
 int numTransactions=1;
 int maxItemsetSize=0;
-int minSupp;
+int minSupp = 0.07;
 
 double minSupport;
 double minConfidence;
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
     programName = "main";
     //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
     fileName = "test3.txt";
-    minSupp = 0.07;
+    //minSupp = 0.07;
     minConfidence = 0.8;
     displayOption = 'a';
 
