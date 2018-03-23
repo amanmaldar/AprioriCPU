@@ -135,7 +135,7 @@ void initialize(){
         }
 
     }
-    // WE ARE DONE WITH PARSING FILE
+    // WE ARE DONE WITH PARSING FILE ***************works fine till here
     return ;
 
     // Following code generates single items which have support greater than min_sup
