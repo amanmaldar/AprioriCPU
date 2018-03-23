@@ -90,7 +90,7 @@ void initialize(){
 
     while (getline(infile,line)){
          istringstream iss(line);    //iss refers to each element in line
-        std::cout << "lines are: " << line << std::endl;
+        //std::cout << "lines are: " << line << std::endl;
         m=0;
 
         while( iss >> n ){      // work on a every entry in sible line
