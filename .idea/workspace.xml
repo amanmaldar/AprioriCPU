@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5625c7b3-b454-42b0-bb3c-dc87ca8c08ae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test3.txt" afterPath="$PROJECT_DIR$/test3.txt" />
-    </list>
+    <list default="true" id="5625c7b3-b454-42b0-bb3c-dc87ca8c08ae" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +25,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="165" column="12" lean-forward="true" selection-start-line="165" selection-start-column="12" selection-end-line="165" selection-end-column="12" />
+            <state relative-caret-position="1245">
+              <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -141,12 +138,12 @@
       <updated>1521407630281</updated>
       <workItem from="1521407631895" duration="4327000" />
       <workItem from="1521588060794" duration="15007000" />
-      <workItem from="1521734762207" duration="20198000" />
+      <workItem from="1521734762207" duration="20233000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53869000" />
+    <option name="totallyTimeSpent" value="53904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -243,8 +240,8 @@
     <entry file="file://$PROJECT_DIR$/header.h" />
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="165" column="12" lean-forward="true" selection-start-line="165" selection-start-column="12" selection-end-line="165" selection-end-column="12" />
+        <state relative-caret-position="1245">
+          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
