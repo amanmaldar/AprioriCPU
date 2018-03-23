@@ -24,6 +24,9 @@ double minSupport;
 double minConfidence;
 int number_of_strong_rules=0;
 
+int one_freq_itemset=0;
+int two_freq_itemset=0;
+int three_freq_itemset=0;
 vector<set<int>> transactions;
 
 
@@ -40,8 +43,8 @@ void initialize();
 int main(int argc, char **argv){
 
     programName = "main";
-    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    fileName = "test3.txt";
+    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    //fileName = "test3.txt";
     //minSupp = 0.07;
     minConfidence = 0.8;
     displayOption = 'a';
@@ -145,8 +148,10 @@ void initialize(){
     minSupport=round(minSupp * numTransactions);
     cout << "aabbccdd: " << minSupport << " " << numTransactions << " " << minSupp << endl;
     //return;
+    //return;
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);
+
     for (int i=1; i<= 1000; i++)
     {
        // cout  << "minSupport" << minSupport << " item count: " << item_count[i] << endl;
@@ -154,12 +159,17 @@ void initialize(){
            //cout  << "minSupport" << minSupport << endl;
       //imp       //cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
+            one_freq_itemset++;
         }
 
     }
 
+    cout << "one_freq_itemset: " << one_freq_itemset << endl;
+    /*
     cout << "size of frequent items is: " << onefrequentItemSet.size() -1 << endl;
+
     cout << "qualified items numbers are: ";
+
 
 
     for (int i=1; i<= onefrequentItemSet.size() -1; i++)
@@ -167,7 +177,7 @@ void initialize(){
         cout << onefrequentItemSet[i] << " ";
     }
     cout << endl;
-
+*/
     //return;
     // make a pair of frequest items
 
@@ -205,7 +215,7 @@ void initialize(){
     {
         int fir = it->first;
         int sec = it->second;
-        cout << "Pair is: (" <<it->first << "," << it->second << ") " ;
+    //    cout << "Pair is: (" <<it->first << "," << it->second << ") " ;
         // itemToTID.at(it->first); this is vector 1
         // itemToTID.at(it->second); this is vector 2
         vector <int> vec2;
@@ -214,27 +224,29 @@ void initialize(){
         std::set_intersection(  itemToTID.at(it->first).begin()+1, itemToTID.at(it->first).end(),
                                 itemToTID.at(it->second).begin()+1, itemToTID.at(it->second).end(),
                                 std::back_inserter( vec2 )  );
-        cout << " Frequency: " << vec2.size() ;;
-        cout << " Common TIDs: " ;
-        for (int i=0;i<vec2.size();i++)        {            cout << vec2[i] << " " ;        }
+    //    cout << " Frequency: " << vec2.size() ;;
+    //    cout << " Common TIDs: " ;
+  /*      for (int i=0;i<vec2.size();i++)        {            cout << vec2[i] << " " ;        }
         //pairCount.insert(make_pair(it->first,it->second),vec2.size());
         cout << endl;
-
+*/
 
 
         // now create a new set having only the pair which has grater support
-        if (vec2.size() >= minSupp){     //for 5 transactions minSupp is 2 . MinSupp is 0.4 by default
+        if (vec2.size() >= minSupport){     //for 5 transactions minSupp is 2 . MinSupp is 0.4 by default
             //  struct_pairOfTwo.setofPairOfTwo.insert(make_pair(onefrequentItemSet[i],onefrequentItemSet[j]));
             //cout << "inserting into new set" << endl;
             struct_pairOfTwo.filteredSetofPairOfTwo.insert(make_pair(fir,sec));
+            two_freq_itemset++;
         }
         vec2.clear();
     }
+    cout << "two_freq_itemset: " << two_freq_itemset << endl;
 
     set <pair <int,int> > :: iterator it1;
     cout << "filtered pair of 2 with bigger support is: " << endl;
     for(it1 = struct_pairOfTwo.filteredSetofPairOfTwo.begin(); it1 != struct_pairOfTwo.filteredSetofPairOfTwo.end(); it1++){
-        cout << "Filtered Pair is : (" << it1->first << "," << it1->second << ")" << endl;
+ //       cout << "Filtered Pair is : (" << it1->first << "," << it1->second << ")" << endl;
     }
 
     // works fine till here **********
@@ -273,23 +285,26 @@ void initialize(){
 
                 //if (1) {
                 int test2=0;
-                if (vec3.size() >= minSupp) {
-                    test2++;
-                    cout << "pair is : " << it->first << " " << it->second << " " << it1->second;
+                if (vec3.size() >= minSupport) {
+                    three_freq_itemset++;
+                /*    cout << "pair is : " << it->first << " " << it->second << " " << it1->second;
                     cout << " Frequency: " << vec3.size();;
                     cout << " Common TIDs: ";
                     for (int i = 0; i < vec3.size(); i++) { cout << vec3[i] << " "; }
-                    cout << endl;
+                    cout << endl;*/
+                    // need to save three pairs yet
                 }
                 //pairCount.insert(make_pair(it->first,it->second),vec2.size());
-                cout << "3 pairs: " << test2;
+
                 vec2.clear();
                 vec3.clear();
 
             }
 
         }
+
     }
+    cout << "three_freq_itemset: " << three_freq_itemset;
 
 
 
