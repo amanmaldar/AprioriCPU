@@ -152,14 +152,14 @@ void initialize(){
        // cout  << "minSupport" << minSupport << " item count: " << item_count[i] << endl;
         if(item_count[i] >= minSupport){
            //cout  << "minSupport" << minSupport << endl;
-             cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
+      //imp       //cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
         }
 
     }
 
     cout << "size of frequent items is: " << onefrequentItemSet.size() -1 << endl;
-    cout << "qualified items are: ";
+    cout << "qualified items numbers are: ";
 
 
     for (int i=1; i<= onefrequentItemSet.size() -1; i++)
@@ -168,7 +168,7 @@ void initialize(){
     }
     cout << endl;
 
-    return;
+    //return;
     // make a pair of frequest items
 
     typedef struct{
@@ -236,7 +236,7 @@ void initialize(){
     for(it1 = struct_pairOfTwo.filteredSetofPairOfTwo.begin(); it1 != struct_pairOfTwo.filteredSetofPairOfTwo.end(); it1++){
         cout << "Filtered Pair is : (" << it1->first << "," << it1->second << ")" << endl;
     }
-
+    return;
 
     /*cout << "numTransactions is: " << numTransactions << endl;
     cout << "support is: " << minSupp << endl; */
