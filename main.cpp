@@ -18,7 +18,7 @@ using namespace std;
 int numItems=0;
 int TID_Transactions = 0;
 int maxItemsetSize=0;
-double minSupp = 0.4; // 0.001;
+double minSupp = 0.001; // 0.001;
 
 double minSupport;
 double minConfidence;
@@ -46,8 +46,8 @@ void initialize();
 int main(int argc, char **argv){
 
     programName = "main";
-    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    //fileName = "test3.txt";
+    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    fileName = "test3.txt";
 //    minConfidence = 0.8;
    // displayOption = 'a';
 
@@ -99,7 +99,7 @@ void initialize(){
 
     while (getline(infile,line)){
          istringstream iss(line);       //iss refers to each element in line
-        cout << "Transactions are: " << line << endl;
+        //cout << "Transactions are: " << line << endl;
         m=0;
         TID_Transactions +=1;
 
@@ -207,7 +207,8 @@ void initialize(){
     int delta=1,a;
 
     typedef struct {
-        int a=0,b=0,c=0;
+        //int a=0,b=0,c=0;
+        int a,b,c;
     }SetofPairOfThree;
 
     //SetofPairOfThree tmp1;
@@ -242,6 +243,8 @@ void initialize(){
                                       std::back_inserter(vec3));
 
                 SetofPairOfThree tmpSet;
+                //cout << "testing min sup 2" << minSupport << endl;
+
                 if (vec3.size() >= minSupport) {
                     three_freq_itemset++;
                     tmpSet.a = it->first;
@@ -263,7 +266,7 @@ void initialize(){
     }
     cout << "three_freq_itemset: " << three_freq_itemset << endl;
 
-    return;
+    //return;
     vector <SetofPairOfThree> :: iterator it2,it3;
 
     int c,d;
@@ -294,30 +297,30 @@ void initialize(){
 
 
                 std::set_intersection(itemId_TidMapping.at(it2.base()->a).begin() + 1, itemId_TidMapping.at(it2.base()->a).end(),
-                                      itemId_TidMapping.at(it2.base()->b).begin() + 1, itemId_TidMapping.at(it2.base()->b).end(),
+                                      itemId_TidMapping.at(it2.base()->c).begin() + 1, itemId_TidMapping.at(it2.base()->c).end(),
                                       std::back_inserter(vec4));
 
                 std::set_intersection(vec4.begin(), vec4.end(),
-                                      itemId_TidMapping.at(it2.base()->c).begin() + 1, itemId_TidMapping.at(it2.base()->c).end(),
+                                      itemId_TidMapping.at(it3.base()->c).begin() + 1, itemId_TidMapping.at(it3.base()->c).end(),
                                       std::back_inserter(vec5));
 
+                //cout << "testing min sup 3" << minSupport << endl;
                 if (vec5.size() >= minSupport) {
                     vec4.clear(); vec5.clear();
 
-                    std::set_intersection(itemId_TidMapping.at(it3.base()->a).begin() + 1, itemId_TidMapping.at(it3.base()->a).end(),
-                                          itemId_TidMapping.at(it3.base()->b).begin() + 1, itemId_TidMapping.at(it3.base()->b).end(),
+                    std::set_intersection(itemId_TidMapping.at(it3.base()->b).begin() + 1, itemId_TidMapping.at(it3.base()->b).end(),
+                                          itemId_TidMapping.at(it2.base()->c).begin() + 1, itemId_TidMapping.at(it2.base()->c).end(),
                                           std::back_inserter(vec4));
 
                     std::set_intersection(vec4.begin(), vec4.end(),
                                           itemId_TidMapping.at(it3.base()->c).begin() + 1, itemId_TidMapping.at(it3.base()->c).end(),
                                           std::back_inserter(vec5));
-                    if (vec5.size() >= minSupport) {
-                       // cout << "filtered pair are : " << it2.base()->a << " "<< it2.base()->b  << " " << it2.base()->c <<" " << it3.base()->c << endl;
-                        four_freq_itemset++;
-                    }
-
-
-                    }
+                        if (vec5.size() >= minSupport) {
+                           // cout << "filtered pair are : " << it2.base()->a << " "<< it2.base()->b  << " " << it2.base()->c <<" " << it3.base()->c << endl;
+                            four_freq_itemset++;
+                            //cout << "four_freq_itemset: " << four_freq_itemset << endl;
+                        }
+                }
 
 
             }
