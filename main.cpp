@@ -12,13 +12,13 @@
 #include <unordered_set>
 #include <iomanip>
 #include <typeinfo>
+#include "chrono"
 using namespace std;
 
 
-int numItems=0;
 int TID_Transactions = 0;
 int maxItemsetSize=0;
-double minSupp = 0.001; // 0.001;
+double minSupp = 0.0001; // 0.001;
 
 double minSupport;
 double minConfidence;
@@ -30,39 +30,23 @@ int three_freq_itemset=0;
 int four_freq_itemset=0;
 
 
-vector<set<int>> transactions;
-
-
-clock_t t1,t2;
 
 string fileName;
-string programName;
-string displayOption="?";
-
 
 void initialize();
 
 
 int main(int argc, char **argv){
 
-    programName = "main";
-    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    fileName = "test3.txt";
-//    minConfidence = 0.8;
-   // displayOption = 'a';
+    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
 
-    t1=clock();
+    auto start = std::chrono::high_resolution_clock::now();
 
     initialize();
-    return 1;
 
-    t2=clock();
-    double diff=((double)t2-(double)t1);
-    double seconds = diff / CLOCKS_PER_SEC;
-
-    cout<<"Execution time: ";
-    cout<<round(seconds);
-    cout<<" seconds"<<endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> el = end - start;
+    cout<<"Execution time New: " << el.count() * 1000 << " mS ";
 
     return 0;
 }
@@ -135,7 +119,7 @@ void initialize(){
     for (int i=1; i<= 1000; i++)
     {
         if(itemIDcount[i] >= minSupport){
-      //imp       //cout << "item id is: " << i << " item_count is: " << item_count[i] << endl;
+         //cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
             onefrequentItemSet.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
         }
@@ -204,12 +188,15 @@ void initialize(){
     //  First k - 2 = 2 items must match in pass k = 4
     // k is size of new itemeset to be generated. Here k =3
     //make a pair of 3 now
-    int delta=1,a;
+    int delta=1,a1;
 
     typedef struct {
         //int a=0,b=0,c=0;
-        int a,b,c;
-    }SetofPairOfThree;
+        int a;
+        int b;
+        int c;
+    } SetofPairOfThree;
+    SetofPairOfThree tmpSet;
 
     //SetofPairOfThree tmp1;
     vector <SetofPairOfThree>  vectorofPairOfThree;
@@ -224,14 +211,14 @@ void initialize(){
     //int delta1= 1;
     for (it = myset.begin(); it != myset.end(); it++,delta++ ) {
         //cout << "parent pair is : " << it->first << " "<< it->second  << endl;
-        a = it->first;
+        a1 = it->first;
 
         it1 = myset.begin();                     // assign second iterator to same set *imp
         for (int k = 0; k < delta; k++) { it1++; }   //add a offset to second iterator and iterate over same set
 
         vector <int> vec2, vec3;
         for (it1 = it1; it1 != myset.end(); it1++) {  //iterating over same set.
-            if (a == it1->first) {
+            if (a1 == it1->first) {
                 // find out the occurrences for the particular pair using set_operation
 
                 std::set_intersection(itemId_TidMapping.at(it->first).begin() + 1, itemId_TidMapping.at(it->first).end(),
@@ -242,7 +229,8 @@ void initialize(){
                                       itemId_TidMapping.at(it1->second).begin() + 1, itemId_TidMapping.at(it1->second).end(),
                                       std::back_inserter(vec3));
 
-                SetofPairOfThree tmpSet;
+                //SetofPairOfThree tmpSet;
+               // tmpSet.a= 0; tmpSet.b=0; tmpSet.c=0;
                 //cout << "testing min sup 2" << minSupport << endl;
 
                 if (vec3.size() >= minSupport) {
