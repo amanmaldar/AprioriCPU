@@ -29,7 +29,7 @@ int two_freq_itemset=0;
 int three_freq_itemset=0;
 int four_freq_itemset=0;
 
-
+int maxItemID = 1000;
 
 string fileName;
 
@@ -38,8 +38,12 @@ void initialize();
 
 int main(int argc, char **argv){
 
-    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    fileName = "test3.txt";
+    if (argv[1] == "1")
+    {
+        fileName = "test3.txt";
+    }
+    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+
 
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -61,7 +65,7 @@ void initialize(){
     // It is used to determine support for single elements.
     // itemID will go from 1 to 1000
     vector <int> itemIDcount;
-    for (int i = 1; i <= 1000; ++i){
+    for (int i = 1; i <= maxItemID; ++i){
         itemIDcount.push_back(0) ;          //initialize all the itemID (1 -> 1000) counts with zero.
         //itemIDcount[i] = 0;
     }
@@ -73,7 +77,7 @@ void initialize(){
 
     vector <int> tmpTID;
     tmpTID.push_back(0);
-    for (int i = 1; i <= 1000; ++i){
+    for (int i = 1; i <= maxItemID; ++i){
         //initialize each vector element in itemId_TidMapping with a vector tmpTID
         itemId_TidMapping.push_back(tmpTID) ;
     }
@@ -117,7 +121,7 @@ void initialize(){
     vector <int> onefrequentItemSet;
     onefrequentItemSet.push_back(0);    // initialized first index with 0 as we are not using it.
 
-    for (int i=1; i<= 1000; i++)
+    for (int i=1; i<= maxItemID; i++)
     {
         if(itemIDcount[i] >= minSupport){
          //cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
