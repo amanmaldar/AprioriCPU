@@ -38,7 +38,8 @@ void initialize();
 
 int main(int argc, char **argv){
 
-    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
+    fileName = "test3.txt";
 
     auto start = std::chrono::high_resolution_clock::now();
 
