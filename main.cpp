@@ -42,6 +42,7 @@ int main(int argc, char **argv){
     {
         fileName = "test3.txt";
     }
+    cout << "argv[1]" << argv[1] << endl;
     //fileName = "D:\\Github Programs\\Apriori\\test3.txt";
     fileName = "test3.txt";
 
@@ -51,7 +52,7 @@ int main(int argc, char **argv){
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> el = end - start;
-    cout<<"Execution time New: " << el.count() * 1000 << " mS ";
+    cout<<"Execution time New: " << el.count() * 1000 << " mS " << endl;
 
     return 0;
 }
