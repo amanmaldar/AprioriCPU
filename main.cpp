@@ -38,11 +38,14 @@ void initialize();
 
 int main(int argc, char **argv){
 
-    fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    
-    if (string(argv[1]) == "a");
+
+
+    if (string(argv[1]) == "a")
     {
         fileName = "test3.txt";
+    }
+    else{
+        fileName = "D:\\Github Programs\\Apriori\\test3.txt";
     }
     //cout << "argv[1]" << argv[1] << endl;
 
