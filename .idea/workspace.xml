@@ -12,8 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5625c7b3-b454-42b0-bb3c-dc87ca8c08ae" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileGen.exe" afterPath="$PROJECT_DIR$/fileGen.exe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileGen.cpp" afterPath="$PROJECT_DIR$/fileGen.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test3.txt" afterPath="$PROJECT_DIR$/test3.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test4.txt" afterPath="$PROJECT_DIR$/test4.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +29,7 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
+            <state relative-caret-position="840">
               <caret line="266" column="0" lean-forward="false" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -142,12 +143,12 @@
       <workItem from="1521407631895" duration="4327000" />
       <workItem from="1521588060794" duration="15007000" />
       <workItem from="1521734762207" duration="24883000" />
-      <workItem from="1521819504920" duration="23519000" />
+      <workItem from="1521819504920" duration="24533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82073000" />
+    <option name="totallyTimeSpent" value="83087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -254,7 +255,7 @@
     <entry file="file://$PROJECT_DIR$/header.h" />
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
+        <state relative-caret-position="840">
           <caret line="266" column="0" lean-forward="false" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
