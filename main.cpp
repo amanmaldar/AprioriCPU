@@ -38,7 +38,7 @@ void initialize();
 
 int main(int argc, char **argv){
 
-    if (argv[1] == "1")
+    if (argv[1] == "a")
     {
         fileName = "test3.txt";
     }
