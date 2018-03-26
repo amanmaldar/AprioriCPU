@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git pull origin master
-g++ -std=c++11 main.cpp -o main
-./main a
+g++ -std=c++11 main.cpp -o apriori
+./apriori a
