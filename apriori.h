@@ -59,7 +59,7 @@ vector <FourStruct> C4,L4;
 
 
 //-------------------functions------------
-void initialize(int argc);
+void Execute(int argc);
 void generateL4(vector <FourStruct> C4);
 void generateL3(vector <ThreeStruct>  C3);
 

@@ -5,7 +5,7 @@
 
 double minSupp = 0.001; // 0.001;
 
-void initialize(int argc){
+void Execute(int argc){
 
     parse_database(argc);
 
@@ -163,13 +163,13 @@ void initialize(int argc){
     }
     cout << "four_freq_itemset:     " << four_freq_itemset << endl;
     //-----------------------------------------------------------------------------
-}   // end intialize
+}   // end initialize
 
 int main(int argc, char **argv){
 
     auto start = chrono::high_resolution_clock::now();
 
-    initialize(argc);
+    Execute(argc);
 
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> el = end - start;
