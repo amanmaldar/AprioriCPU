@@ -18,7 +18,7 @@ int main()
 	    int iteration;
     	int m = (rand() % 3) + 2;
     	while(i++ < m) {
-    		int r = (rand() % 8) + 1;
+    		int r = (rand() % 500) + 1;
     		
     		count = numbers.count(r);
     		if (count == 0){
