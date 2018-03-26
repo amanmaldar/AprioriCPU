@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 	int i = 0;
-	int lines = 20000;
+	int lines = 1000;
 	int count;
 	set <int> numbers;
 	set <int> :: iterator it, it1;

@@ -18,7 +18,7 @@ using namespace std;
 
 int TID_Transactions = 0;
 int maxItemsetSize=0;
-double minSupp = 0.00005; // 0.001;
+double minSupp = 0.001; // 0.001;
 
 double minSupport;
 double minConfidence;
