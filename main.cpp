@@ -1,316 +1,184 @@
-#include <iostream>
-#include <stdlib.h>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <time.h>
-#include <math.h>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <iomanip>
-#include <typeinfo>
-#include "chrono"
-using namespace std;
+
+#include "apriori.h"
+#include "functions.h"
 
 
-int TID_Transactions = 0;
-int maxItemsetSize=0;
 double minSupp = 0.001; // 0.001;
 
-double minSupport;
-double minConfidence;
-int number_of_strong_rules=0;
+void initialize(int argc){
 
-int one_freq_itemset=0;
-int two_freq_itemset=0;
-int three_freq_itemset=0;
-int four_freq_itemset=0;
+    parse_database(argc);
 
-int maxItemID = 1000;
+    L1.push_back(0);    // initialized first index with 0 as we are not using it.
+    minSupport = round(minSupp *  TID_Transactions);
+    // Following code generates single items which have support greater than min_sup
+    // compare the occurrence of the object against minSupport
 
-string fileName;
+    //Generate L1
+    for (int i=1; i<= maxItemID; i++)
+    {
+        if(itemIDcount[i] >= minSupport){
+            L1.push_back(i);     //push TID into frequentItem
+            one_freq_itemset++;
+        }
+    }
+    cout << "one_freq_itemset:      " << one_freq_itemset << endl;
+    //----------------------------------------------------------------
 
-void initialize();
+    //Generate L2 .  make a pair of frequent items.
+    for (int i=1;i <= L1.size() -1 -1; i++)     //-1 is done for eliminating first entry
+    {
+        for (int j=i+1;j <= L1.size() -1; j++){
+            twoStruct.a = L1[i];
+            twoStruct.b = L1[j];
+            L2.push_back(twoStruct);
+        }
+    }
 
+    //Generate C2. Prune L2 . Compare against min_support and remove less frequent items.
+    for(auto it = L2.begin(); it != L2.end(); it++)
+    {
+        int fir = it->a;
+        int sec = it->b;
+
+        vector <int> vecLocal;
+        // read corresponding itemToTID vector and find out common elements from them
+        // this is compared against min_sup later
+        // find out the occurrences for the particular pair using set_operation
+        std::set_intersection(  itemId_TidMapping.at(fir).begin()+1, itemId_TidMapping.at(fir).end(),
+                                itemId_TidMapping.at(sec).begin()+1, itemId_TidMapping.at(sec).end(),
+                                std::back_inserter( vecLocal )  );
+
+        if (vecLocal.size() >= minSupport){
+            twoStruct.a = fir;
+            twoStruct.b = sec;
+            twoStruct.freq = vecLocal.size();
+            C2.push_back(twoStruct);
+            two_freq_itemset++;
+        }
+        vecLocal.clear();
+    }
+    cout << "two_freq_itemset:      " << two_freq_itemset << endl;
+    //---------------------------------------------------------------------
+
+    //Generate L3
+    int delta=1;
+    // FOLLOWING 2 FOR LOOPS GENERATE SET OF 3 ITEMS
+
+    for (auto it = C2.begin(); it != C2.end(); it++,delta++ ) {
+        int base = it->a;
+
+        auto it1 = C2.begin();                     // assign second iterator to same set *imp
+        for (int k = 0; k < delta; k++) { it1++; }   //add a offset to second iterator and iterate over same set
+
+        for (it1 = it1; it1 != C2.end(); it1++) {  //iterating over same set.
+            if (base == it1->a) {
+                    threeStruct.a = it->a;
+                    threeStruct.b = it ->b;
+                    threeStruct.c = it1->b;
+                    threeStruct.freq = 0;
+                    L3.push_back(threeStruct);
+            }
+        }
+    }
+
+    // GENERATE C3 . Prune L3.
+
+    for (auto it = L3.begin(); it != L3.end(); it++ ) {
+
+        vector<int> vecLocal1, vecLocal2;
+        std::set_intersection(itemId_TidMapping.at(it->a).begin() + 1, itemId_TidMapping.at(it->a).end(),
+                              itemId_TidMapping.at(it->b).begin() + 1, itemId_TidMapping.at(it->b).end(),
+                              std::back_inserter(vecLocal1));
+
+        std::set_intersection(vecLocal1.begin(), vecLocal1.end(),
+                              itemId_TidMapping.at(it->c).begin() + 1, itemId_TidMapping.at(it->c).end(),
+                              std::back_inserter(vecLocal2));
+
+
+        if (vecLocal2.size() >= minSupport) {
+            three_freq_itemset++;
+            threeStruct.a = it->a;
+            threeStruct.b = it->b;
+            threeStruct.c =it->c;
+            threeStruct.a = vecLocal2.size();
+            C3.push_back(threeStruct);
+        }
+        vecLocal1.clear();  vecLocal2.clear();
+
+    }
+    cout << "three_freq_itemset:    " << three_freq_itemset << endl;
+    //--------------------------------------------------------------
+
+    //Generate L4
+    delta= 1;
+
+    for(auto it2 = C3.begin(); it2 != C3.end(); it2++,delta++)
+    {
+        int c,d;
+        auto it3 = C3.begin();                     // assign second iterator to same set *imp
+        for (int k = 0; k < delta; k++) { it3++; }   //add a offset to second iterator and iterate over same set
+
+        c = it2->a;
+        d = it2->b;
+
+        for (it3 = it3; it3 != C3.end(); it3++) {  //iterating over same set.
+              if (c == it3->a && d == it3->b) {
+                  fourStruct.a = it2->a;
+                  fourStruct.b = it2->b;
+                  fourStruct.c = it2->c;
+                  fourStruct.d = it3->c;
+                  fourStruct.freq =0;
+                  L4.push_back(fourStruct);
+              }
+        }
+    }
+
+    // Generate C4. Prune L4
+    for(auto it2 = L4.begin(); it2 != L4.end(); it2++) {
+        vector<int> vecLocal1, vecLocal2,vecLocal3;
+        std::set_intersection(itemId_TidMapping.at(it2->a).begin() + 1, itemId_TidMapping.at(it2->a).end(),
+                              itemId_TidMapping.at(it2->b).begin() + 1, itemId_TidMapping.at(it2->b).end(),
+                              std::back_inserter(vecLocal1));
+
+        std::set_intersection(itemId_TidMapping.at(it2->c).begin() + 1, itemId_TidMapping.at(it2->c).end(),
+                              itemId_TidMapping.at(it2->d).begin() + 1, itemId_TidMapping.at(it2->d).end(),
+                              std::back_inserter(vecLocal2));
+
+        std::set_intersection(vecLocal1.begin(), vecLocal1.end(),
+                              vecLocal2.begin(), vecLocal2.end(),
+                              std::back_inserter(vecLocal3));
+
+        if (vecLocal3.size() >= minSupport) {
+            four_freq_itemset++;
+            fourStruct.a = it2->a;
+            fourStruct.b = it2->b;
+            fourStruct.c = it2->c;
+            fourStruct.d = it2->d;
+            fourStruct.freq = vecLocal3.size();
+            C4.push_back(fourStruct);
+            }
+            vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
+
+    }
+    cout << "four_freq_itemset:     " << four_freq_itemset << endl;
+    //-----------------------------------------------------------------------------
+}   // end intialize
 
 int main(int argc, char **argv){
 
-    if (argc > 1)
-    {
-        fileName = "test3.txt";
-    }
-    else{
-        fileName = "D:\\Github Programs\\Apriori\\test3.txt";
-    }
+    auto start = chrono::high_resolution_clock::now();
 
+    initialize(argc);
 
-
-
-    auto start = std::chrono::high_resolution_clock::now();
-
-    initialize();
-
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> el = end - start;
-    cout<<"Execution time New: " << el.count() * 1000 << " mS " << endl;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> el = end - start;
+    cout<<"Execution time is:     " << el.count() * 1000 << " mS " << endl;
 
     return 0;
 }
 
-void initialize(){
 
-    ifstream infile(fileName);
-    string line;
-
-    // itemIDcount is used to store number of times particular itemID appears in dataset.
-    // It is used to determine support for single elements.
-    // itemID will go from 1 to 1000
-    vector <int> itemIDcount;
-    for (int i = 1; i <= maxItemID; ++i){
-        itemIDcount.push_back(0) ;          //initialize all the itemID (1 -> 1000) counts with zero.
-        //itemIDcount[i] = 0;
-    }
-
-    // A single vector is associated with every itemID.
-    // That vector stores the TID [Transaction ID] in which particular itemID appears.
-    vector <vector <int>> itemId_TidMapping;
-    // used later to calculate the count of pair
-
-    vector <int> tmpTID;
-    tmpTID.push_back(0);
-    for (int i = 1; i <= maxItemID; ++i){
-        //initialize each vector element in itemId_TidMapping with a vector tmpTID
-        itemId_TidMapping.push_back(tmpTID) ;
-    }
-
-
-    int n;
-
-    while (getline(infile,line)){
-         istringstream iss(line);       //iss refers to each element in line
-        //cout << "Transactions are: " << line << endl;
-        TID_Transactions +=1;
-
-        while( iss >> n ){              // work on a every single itemID on transaction.
-
-            itemIDcount[n] +=1;
-            // m captures the number of items in one transaction (one line of file).
-
-            //push TID to corresponding vector of itemID
-            itemId_TidMapping.at(n).push_back(TID_Transactions);
-            // these vectors would be automatically sorted and hence we can use set_intersection later.
-        }
-    }
-    // WE ARE DONE WITH PARSING FILE ***************works fine till here
-    //return ;
-
-    // Following code generates single items which have support greater than min_sup
-    // compare the occurrence of the object against minSupport
-
-    //cout << "Test1: " << minSupport << " " << TID_Transactions << " " << minSupp << endl;
-
-    vector <int> onefrequentItemSet;
-    onefrequentItemSet.push_back(0);    // initialized first index with 0 as we are not using it.
-
-    minSupport = round(minSupp *  TID_Transactions);
-
-    for (int i=1; i<= maxItemID; i++)
-    {
-        if(itemIDcount[i] >= minSupport){
-         //cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
-            onefrequentItemSet.push_back(i);     //push TID into frequentItem
-            one_freq_itemset++;
-        }
-    }
-
-    cout << "one_freq_itemset: " << one_freq_itemset << endl;
-
-    // make a pair of frequent items
-
-    set <pair <int,int> > setofPairOfTwo;
-    set <pair <int,int> > filteredSetofPairOfTwo;
-
-    //set <pair <int,int> >pairOfTwo;
-    pair <int,int>  tmpPair;
-    for (int i=1;i <= onefrequentItemSet.size() -1 -1; i++)     //-1 is done for eliminating first entry
-    {
-        for (int j=i+1;j <= onefrequentItemSet.size() -1; j++){
-
-            setofPairOfTwo.insert(make_pair(onefrequentItemSet[i],onefrequentItemSet[j]));
-        }
-    }
-
-
-    // cout << "printing pairs: " << endl;
-
-    set <pair <int,int> > :: iterator it;
-    for(it = setofPairOfTwo.begin(); it != setofPairOfTwo.end(); it++)
-    {
-        int fir = it->first;
-        int sec = it->second;
-         //cout << "Pair is: (" <<it->first << "," << it->second << ") " << endl;
-        // itemToTID.at(it->first); this is vector 1
-        // itemToTID.at(it->second); this is vector 2
-        vector <int> vec2;
-        // read corresponding itemToTID vector and find out common elements from them
-        // this is compared against min_sup later
-        std::set_intersection(  itemId_TidMapping.at(it->first).begin()+1, itemId_TidMapping.at(it->first).end(),
-                                itemId_TidMapping.at(it->second).begin()+1, itemId_TidMapping.at(it->second).end(),
-                                std::back_inserter( vec2 )  );
-
-        // now create a new set having only the pair which has grater support
-        if (vec2.size() >= minSupport){     //for 5 transactions minSupp is 2 . MinSupp is 0.4 by default
-            filteredSetofPairOfTwo.insert(make_pair(fir,sec));
-            two_freq_itemset++;
-        }
-        vec2.clear();
-    }
-    cout << "two_freq_itemset: " << two_freq_itemset << endl;
-
-    //return;
-    /*
-    set <pair <int,int> > :: iterator it1;
-    cout << "filtered pair of 2 with bigger support is: " << endl;
-    for(it1 = struct_pairOfTwo.filteredSetofPairOfTwo.begin(); it1 != struct_pairOfTwo.filteredSetofPairOfTwo.end(); it1++){
-        cout << "Filtered Pair is : (" << it1->first << "," << it1->second << ")" << endl;
-    }*/
-
-    // works fine till here **********
-
-   // return;
-
-
-    //make a pair of 3 now
-    int delta=1,a1;
-
-    typedef struct {
-        //int a=0,b=0,c=0;
-        int a;
-        int b;
-        int c;
-    } SetofPairOfThree;
-    SetofPairOfThree tmpSet;
-
-    //SetofPairOfThree tmp1;
-    vector <SetofPairOfThree>  vectorofPairOfThree;
-  /*  for (int i=1;i<=1000;i++){
-        //vectorofPairOfThree.push_back(tmp1);
-    }*/
-
-    set <pair <int,int> > myset = filteredSetofPairOfTwo;
-    set <pair <int,int> > :: iterator it1;
-
-    // FOLLOWING 2 FOR LOOPS GENERATE SET OF 3 ITEMS
-    //int delta1= 1;
-    for (it = myset.begin(); it != myset.end(); it++,delta++ ) {
-        //cout << "parent pair is : " << it->first << " "<< it->second  << endl;
-        a1 = it->first;
-
-        it1 = myset.begin();                     // assign second iterator to same set *imp
-        for (int k = 0; k < delta; k++) { it1++; }   //add a offset to second iterator and iterate over same set
-
-        vector <int> vec2, vec3;
-        for (it1 = it1; it1 != myset.end(); it1++) {  //iterating over same set.
-            if (a1 == it1->first) {
-                // find out the occurrences for the particular pair using set_operation
-
-                std::set_intersection(itemId_TidMapping.at(it->first).begin() + 1, itemId_TidMapping.at(it->first).end(),
-                                      itemId_TidMapping.at(it->second).begin() + 1, itemId_TidMapping.at(it->second).end(),
-                                       std::back_inserter(vec2));
-
-                std::set_intersection(vec2.begin(), vec2.end(),
-                                      itemId_TidMapping.at(it1->second).begin() + 1, itemId_TidMapping.at(it1->second).end(),
-                                      std::back_inserter(vec3));
-
-                //SetofPairOfThree tmpSet;
-               // tmpSet.a= 0; tmpSet.b=0; tmpSet.c=0;
-                //cout << "testing min sup 2" << minSupport << endl;
-
-                if (vec3.size() >= minSupport) {
-                    three_freq_itemset++;
-                    tmpSet.a = it->first;
-                    tmpSet.b = it ->second;
-                    tmpSet.c = it1->second;
-                    vectorofPairOfThree.push_back(tmpSet);
-
-                    //cout << "pair is : " << it->first << " " << it->second << " " << it1->second << endl;
-                /*    cout << " Frequency: " << vec3.size();;
-                    cout << " Common TIDs: "; */
-
-                    // need to save three pairs yet
-                }
-
-                vec2.clear();  vec3.clear();
-            }
-        }
-
-    }
-    cout << "three_freq_itemset: " << three_freq_itemset << endl;
-
-    //return;
-    vector <SetofPairOfThree> :: iterator it2,it3;
-
-    int c,d;
-    int delta1= 1;
-
-    for(it2 = vectorofPairOfThree.begin(); it2 != vectorofPairOfThree.end(); it2++,delta1++)
-    {
-        it3 = vectorofPairOfThree.begin();                     // assign second iterator to same set *imp
-        for (int k = 0; k < delta1; k++) { it3++; }   //add a offset to second iterator and iterate over same set
-
-        c = it2.base()->a;
-        d = it2.base()->b;
-       // cout << "parent pair is : " << c << " "<< d  << endl;
-
-        vector <int> vec4, vec5;
-        for (it3 = it3; it3 != vectorofPairOfThree.end(); it3++) {  //iterating over same set.
-
-           // cout << "pair are : " << it2.base()->a << " "<< it2.base()->b  << " " << it2.base()->c <<" " <<
-             //    it3.base()->a << " "<< it3.base()->b  << " " << it3.base()->c << endl;
-
-            if (c == it3.base()->a && d == it3.base()->b) {
-                // find out the occurrences for the particular pair using set_operation
-                //cout << "filtered pair are : " << it2.base()->a << " "<< it2.base()->b  << " " << it2.base()->c <<" " << it3.base()->c << endl;
-
-                std::set_intersection(itemId_TidMapping.at(it2.base()->a).begin() + 1, itemId_TidMapping.at(it2.base()->a).end(),
-                                      itemId_TidMapping.at(it2.base()->c).begin() + 1, itemId_TidMapping.at(it2.base()->c).end(),
-                                      std::back_inserter(vec4));
-
-                std::set_intersection(vec4.begin(), vec4.end(),
-                                      itemId_TidMapping.at(it3.base()->c).begin() + 1, itemId_TidMapping.at(it3.base()->c).end(),
-                                      std::back_inserter(vec5));
-
-                if (vec5.size() >= minSupport) {
-                    vec4.clear(); vec5.clear();
-
-                    std::set_intersection(itemId_TidMapping.at(it3.base()->b).begin() + 1, itemId_TidMapping.at(it3.base()->b).end(),
-                                          itemId_TidMapping.at(it2.base()->c).begin() + 1, itemId_TidMapping.at(it2.base()->c).end(),
-                                          std::back_inserter(vec4));
-
-                    std::set_intersection(vec4.begin(), vec4.end(),
-                                          itemId_TidMapping.at(it3.base()->c).begin() + 1, itemId_TidMapping.at(it3.base()->c).end(),
-                                          std::back_inserter(vec5));
-                        if (vec5.size() >= minSupport) {
-                           // cout << "filtered pair are : " << it2.base()->a << " "<< it2.base()->b  << " " << it2.base()->c <<" " << it3.base()->c << endl;
-                            four_freq_itemset++;
-                        }
-                }
-
-
-            }
-        }
-
-
-    }
-    cout << "four_freq_itemset: " << four_freq_itemset << endl;
-
-    infile.close();
-
-    return;
-}
 
 
 

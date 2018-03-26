@@ -3,6 +3,8 @@
     <words>
       <w>cout</w>
       <w>endl</w>
+      <w>itemset</w>
+      <w>struct</w>
     </words>
   </dictionary>
 </component>

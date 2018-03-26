@@ -122,6 +122,33 @@ Apriori/fast:
 	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/build
 .PHONY : Apriori/fast
 
+functions.obj: functions.cpp.obj
+
+.PHONY : functions.obj
+
+# target to build an object file
+functions.cpp.obj:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/functions.cpp.obj
+.PHONY : functions.cpp.obj
+
+functions.i: functions.cpp.i
+
+.PHONY : functions.i
+
+# target to preprocess a source file
+functions.cpp.i:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/functions.cpp.i
+.PHONY : functions.cpp.i
+
+functions.s: functions.cpp.s
+
+.PHONY : functions.s
+
+# target to generate assembly for a file
+functions.cpp.s:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/functions.cpp.s
+.PHONY : functions.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +185,9 @@ help:
 	@echo ... Apriori
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... functions.obj
+	@echo ... functions.i
+	@echo ... functions.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

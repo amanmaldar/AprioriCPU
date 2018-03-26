@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-D:/Github Programs/Apriori/main.cpp
+D:/Github Programs/Apriori/apriori.h
 iostream
 -
 stdlib.h
@@ -37,4 +37,16 @@ typeinfo
 -
 chrono
 D:/Github Programs/Apriori/chrono
+
+D:/Github Programs/Apriori/functions.cpp
+
+D:/Github Programs/Apriori/functions.h
+apriori.h
+D:/Github Programs/Apriori/apriori.h
+
+D:/Github Programs/Apriori/main.cpp
+apriori.h
+D:/Github Programs/Apriori/apriori.h
+functions.h
+D:/Github Programs/Apriori/functions.h
 

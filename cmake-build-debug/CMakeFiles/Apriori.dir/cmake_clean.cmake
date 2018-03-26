@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Apriori.dir/main.cpp.obj"
+  "CMakeFiles/Apriori.dir/functions.cpp.obj"
   "Apriori.pdb"
   "Apriori.exe"
   "Apriori.exe.manifest"

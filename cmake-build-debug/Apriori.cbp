@@ -82,6 +82,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/Github Programs/Apriori/apriori.h">
+			<Option target="Apriori"/>
+		</Unit>
+		<Unit filename="D:/Github Programs/Apriori/functions.cpp">
+			<Option target="Apriori"/>
+		</Unit>
+		<Unit filename="D:/Github Programs/Apriori/functions.h">
+			<Option target="Apriori"/>
+		</Unit>
 		<Unit filename="D:/Github Programs/Apriori/main.cpp">
 			<Option target="Apriori"/>
 		</Unit>
