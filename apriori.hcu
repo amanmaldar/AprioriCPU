@@ -78,7 +78,7 @@ int two_freq_itemset=0;
 int three_freq_itemset=0;
 int four_freq_itemset=0;
 
-int maxItemID = 500;
+int maxItemID = 10;
 
 string fileName;
 
