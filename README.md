@@ -8,4 +8,4 @@ https://www.codeproject.com/articles/70371/apriori-algorithm <br />
 GPU - http://www.ijcaonline.org/archives/volume155/number10/spandana-2016-ijca-912449.pdf
 
 #### Execution Process:
-TBA
+Implementations/Trial_1 and Implementation/Trial2 folder contains CPU implemenation with iterative version. This is starting point to understand the simple logic behind the algorithm implementation.
