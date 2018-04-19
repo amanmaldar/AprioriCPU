@@ -55,12 +55,19 @@ while (tid < n) {
 void Execute(int argc){
 
     parse_database(argc);
-	
+	vector <int> globalMap;
 	for(auto i=1;i<itemId_TidMapping.size();i++){
 		//while(itemId_TidMapping.at(i)){
+		globalMap.push_back(itemId_TidMapping.at(i));
+		globalMap.push_back(-1);
 			cout << "single element: " ;//<< itemId_TidMapping.at(i);
 		//} cout << endl; i++;
 	}
+	cout << "\n printing elements with -1 are: " << endl; 
+	for(int i =0;i<globalMap.size();i++){
+		cout << globalMap[i] << " " ;
+	}cout << endl;
+	
 	
 	//int numberOfBlocks = 1;
 	//int threadsInBlock = 100;
