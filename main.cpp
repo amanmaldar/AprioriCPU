@@ -144,7 +144,7 @@ void Execute(int argc){
 
               }
               else{
-                  it2 = it3;
+                  //it2 = it3;
                   break; // break internal for loop to save iterations
                    }
         }
