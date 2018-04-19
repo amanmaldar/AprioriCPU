@@ -1,5 +1,6 @@
 #!/bin/bash
 
 git pull origin master
-g++ -std=c++11 main.cpp -o apriori
+#g++ -std=c++11 main.cpp -o apriori
+nvcc apriori.cu -st=c++11 -o apriori.cu
 ./apriori a
