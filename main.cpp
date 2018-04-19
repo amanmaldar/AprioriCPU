@@ -43,6 +43,8 @@ void Execute(int argc){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
+            cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
+
         }
     }
     //******************************************************************************************************************
