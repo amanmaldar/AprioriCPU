@@ -10,7 +10,7 @@
 void parse_database(int argc){
 
     if (argc > 1)    {        fileName = "test3.txt";    }
-    else{        fileName = "D:\\Github Programs\\Apriori\\test3.txt";    }
+    else{        fileName = "D:\\Github Programs\\Apriori\\6entries.txt";    }
 
 
     ifstream infile(fileName);

@@ -1,4 +1,5 @@
-
+// Following piece of code was submitted for midterm as CPU implmentation.
+// It needs multiple changes for the data structure as well. Need to reconfigure it.
 #include "apriori.h"
 #include "functions.h"
 
@@ -10,16 +11,18 @@ void Execute(int argc){
     parse_database(argc);
 
     L1.push_back(0);    // initialized first index with 0 as we are not using it.
-    minSupport = round(minSupp *  TID_Transactions);
+    //minSupport = round(minSupp *  TID_Transactions);
+    minSupport = 1;
     // Following code generates single items which have support greater than min_sup
     // compare the occurrence of the object against minSupport
 
-    //Generate L1
+    //Generate L1 - filtered single items ? I think this should be C1, not L1.
     for (int i=1; i<= maxItemID; i++)
     {
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
+            cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
         }
     }
     cout << "one_freq_itemset:      " << one_freq_itemset << endl;
@@ -55,6 +58,7 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
+            cout << "2 Pair is: (" <<it->a << "," << it->b << ") " << "pair_count is: " << vecLocal.size() << endl;
         }
         vecLocal.clear();
     }
@@ -65,7 +69,7 @@ void Execute(int argc){
     int delta=1;
     // FOLLOWING 2 FOR LOOPS GENERATE SET OF 3 ITEMS
 
-    for (auto it = C2.begin(); it != C2.end(); it++,delta++ ) {
+    for (auto it = C2.begin(); it != C2.end(); it++,delta++ ) {     //delta is stride
         int base = it->a;
 
         auto it1 = C2.begin();                     // assign second iterator to same set *imp
@@ -78,7 +82,10 @@ void Execute(int argc){
                     threeStruct.c = it1->b;
                     threeStruct.freq = 0;
                     L3.push_back(threeStruct);
+
             }
+            else
+                break;  // break internal for loop once base is not same as first entry in next pair. Increment *it
         }
     }
 
@@ -103,6 +110,8 @@ void Execute(int argc){
             threeStruct.c =it->c;
             threeStruct.a = vecLocal2.size();
             C3.push_back(threeStruct);
+            cout << "3 Pair is: (" <<it->a << "," << it->b << "," << it->c<< ") " << "pair_count is: " <<vecLocal2.size() << endl;
+
         }
         vecLocal1.clear();  vecLocal2.clear();
 
@@ -131,6 +140,8 @@ void Execute(int argc){
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
               }
+            else
+                  break; // break internal for loop to save iterations
         }
     }
 
@@ -157,7 +168,9 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
-            }
+            cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " <<vecLocal3.size() << endl;
+
+        }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
 
     }
