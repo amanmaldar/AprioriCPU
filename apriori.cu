@@ -58,29 +58,7 @@ void Execute(int argc){
     }
     //******************************************************************************************************************
     //Generate C2. Prune L2 . Compare against min_support and remove less frequent items.
-    for(auto it = L2.begin(); it != L2.end(); it++)
-    {
-        int fir = it->a;
-        int sec = it->b;
-
-        vector <int> vecLocal;
-        // read corresponding itemToTID vector and find out common elements from them
-        // this is compared against min_sup later
-        // find out the occurrences for the particular pair using set_operation
-        std::set_intersection(  itemId_TidMapping.at(fir).begin()+1, itemId_TidMapping.at(fir).end(),
-                                itemId_TidMapping.at(sec).begin()+1, itemId_TidMapping.at(sec).end(),
-                                std::back_inserter( vecLocal )  );
-
-        if (vecLocal.size() >= minSupport){
-            twoStruct.a = fir;
-            twoStruct.b = sec;
-            twoStruct.freq = vecLocal.size();
-            C2.push_back(twoStruct);
-            two_freq_itemset++;
-            cout << "2 Frequent Items are: (" <<it->a << "," << it->b << ") " <<   "Freq is: " << vecLocal.size()<< endl;
-        }
-        vecLocal.clear();
-    }
+ 
     cout << "two_freq_itemset:      " << two_freq_itemset << endl << "\n";
 
     //******************************************************************************************************************
