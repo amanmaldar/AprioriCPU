@@ -13,8 +13,8 @@ File = 6entries.txt\
 Limitation - Generates only till set of 4 pairs as of now.
 
 #### Execution 
-(Pass an argument to output file. It does not mean anything. It was needed when fetching a file in IDE implementation.)
- g++ main.cpp  -std=c++11 -o main.o
+(Pass an argument to output file. It does not mean anything. It was needed when fetching a file in IDE implementation.)\
+ g++ main.cpp  -std=c++11 -o main.o\
 ./main.o a
 
 #### Results
