@@ -54,16 +54,19 @@ while (tid < n) {
 */
 void Execute(int argc){
 
-    parse_database(argc);
-	vector <int> globalMap;
-	for(auto i=1;i<itemId_TidMapping.size();i++){
-		//while(itemId_TidMapping.at(i)){
-		globalMap.push_back(itemId_TidMapping.at(i));
-		//globalMap.push_back(-1);
-			cout << "single element: " ;//<< itemId_TidMapping.at(i);
-		//} cout << endl; i++;
+    	parse_database(argc);
+	vector <int> globalMap;     // convert itemId_TidMapping into long array
+
+	int k =0;                   // global pointer for globalMap
+	for(int i=1;i<itemId_TidMapping.size();i++){
+		for(int j=1;j<itemId_TidMapping.at(i).size();j++){
+			vector <int> tmp = itemId_TidMapping[i];
+			globalMap.push_back(tmp[j]);
+			k++;
+		}
+		globalMap.push_back(-1);    // seperate mappings by -1
 	}
-	cout << "\n printing elements with -1 are: " << endl; 
+	cout << " Printing itemId_TidMapping as array: " << endl;
 	for(int i =0;i<globalMap.size();i++){
 		cout << globalMap[i] << " " ;
 	}cout << endl;
