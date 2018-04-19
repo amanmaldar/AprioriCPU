@@ -22,7 +22,7 @@ void Execute(int argc){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
-            cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
+            //cout << "item id is: " << i << " item_count is: " << itemIDcount[i] << endl;
         }
     }
     cout << "one_freq_itemset:      " << one_freq_itemset << endl;
@@ -58,7 +58,7 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
-            cout << "2 Pair is: (" <<it->a << "," << it->b << ") " << "pair_count is: " << vecLocal.size() << endl;
+            //cout << "2 Pair is: (" <<it->a << "," << it->b << ") " << "pair_count is: " << vecLocal.size() << endl;
         }
         vecLocal.clear();
     }
@@ -107,8 +107,8 @@ void Execute(int argc){
             three_freq_itemset++;
             threeStruct.a = it->a;
             threeStruct.b = it->b;
-            threeStruct.c =it->c;
-            threeStruct.a = vecLocal2.size();
+            threeStruct.c = it->c;
+            threeStruct.freq = vecLocal2.size();
             C3.push_back(threeStruct);
             cout << "3 Pair is: (" <<it->a << "," << it->b << "," << it->c<< ") " << "pair_count is: " <<vecLocal2.size() << endl;
 
@@ -125,25 +125,29 @@ void Execute(int argc){
     for(auto it2 = C3.begin(); it2 != C3.end(); it2++,delta++)
     {
         int c,d;
-        auto it3 = C3.begin();                     // assign second iterator to same set *imp
-        for (int k = 0; k < delta; k++) { it3++; }   //add a offset to second iterator and iterate over same set
+        //auto it3 = C3.begin();                     // assign second iterator to same set *imp
+        auto it3= it2+1;
+        //for (int k = 0; k < delta; k++) { it3++; }   //add a offset to second iterator and iterate over same set
 
         c = it2->a;
         d = it2->b;
 
         for (it3 = it3; it3 != C3.end(); it3++) {  //iterating over same set.
               if (c == it3->a && d == it3->b) {
+            //if (1) {
                   fourStruct.a = it2->a;
                   fourStruct.b = it2->b;
                   fourStruct.c = it2->c;
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
-                  cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " << endl;//<<vecLocal3.size() << endl;
+                  cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it3->c << ") " << "pair_count is: " << endl;//<<vecLocal3.size() << endl;
 
               }
-            else
+              else{
+                  it2 = it3;
                   break; // break internal for loop to save iterations
+                   }
         }
     }
 
@@ -170,6 +174,7 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
+           // cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " <<vecLocal3.size() << endl;
 
         }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
