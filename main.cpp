@@ -139,6 +139,8 @@ void Execute(int argc){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
+                  cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " << endl;//<<vecLocal3.size() << endl;
+
               }
             else
                   break; // break internal for loop to save iterations
@@ -168,7 +170,6 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
-            cout << "4 Pair is: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " <<vecLocal3.size() << endl;
 
         }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
