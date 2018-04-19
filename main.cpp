@@ -125,16 +125,15 @@ void Execute(int argc){
     for(auto it2 = C3.begin(); it2 != C3.end(); it2++,delta++)
     {
         int c,d;
-        //auto it3 = C3.begin();                     // assign second iterator to same set *imp
-        auto it3= it2+1;
-        //for (int k = 0; k < delta; k++) { it3++; }   //add a offset to second iterator and iterate over same set
+        auto it3 = C3.begin();                     // assign second iterator to same set *imp
+        //auto it3= it2+1;
+        for (int k = 0; k < delta; k++) { it3++; }   //add a offset to second iterator and iterate over same set
 
         c = it2->a;
         d = it2->b;
 
         for (it3 = it3; it3 != C3.end(); it3++) {  //iterating over same set.
               if (c == it3->a && d == it3->b) {
-            //if (1) {
                   fourStruct.a = it2->a;
                   fourStruct.b = it2->b;
                   fourStruct.c = it2->c;
