@@ -59,7 +59,7 @@ void Execute(int argc){
 	for(auto i=1;i<itemId_TidMapping.size();i++){
 		//while(itemId_TidMapping.at(i)){
 		globalMap.push_back(itemId_TidMapping.at(i));
-		globalMap.push_back(-1);
+		//globalMap.push_back(-1);
 			cout << "single element: " ;//<< itemId_TidMapping.at(i);
 		//} cout << endl; i++;
 	}
