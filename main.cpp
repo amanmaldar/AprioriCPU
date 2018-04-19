@@ -23,7 +23,7 @@ void Execute(int argc){
     // Following code generates single items which have support greater than min_sup
     // compare the occurrence of the object against minSupport
 
-    cout << "Support:" << minSupport << endl;
+    cout << "\n Support:" << minSupport << endl << "\n";
     //Generate L1 - filtered single items ? I think this should be C1, not L1.
 
     for (int i=1; i<= maxItemID; i++)
@@ -34,7 +34,7 @@ void Execute(int argc){
             cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
         }
     }
-    cout << "one_freq_itemset:      " << one_freq_itemset << endl;
+    cout << "one_freq_itemset:      " << one_freq_itemset << endl << "\n";
     //******************************************************************************************************************
     //Generate L2 .  Make a pair of frequent items in L1
     for (int i=1;i <= L1.size() -1 -1; i++)     //-1 is done for eliminating first entry
@@ -70,7 +70,7 @@ void Execute(int argc){
         }
         vecLocal.clear();
     }
-    cout << "two_freq_itemset:      " << two_freq_itemset << endl;
+    cout << "two_freq_itemset:      " << two_freq_itemset << endl << "\n";
     //******************************************************************************************************************
 
     //Generate L3
@@ -126,7 +126,7 @@ void Execute(int argc){
         vecLocal1.clear();  vecLocal2.clear();
 
     }
-    cout << "three_freq_itemset:    " << three_freq_itemset << endl;
+    cout << "three_freq_itemset:    " << three_freq_itemset << endl << "\n";
     //******************************************************************************************************************
 
     //Generate L4
@@ -187,7 +187,7 @@ void Execute(int argc){
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
 
     }
-    cout << "four_freq_itemset:     " << four_freq_itemset << endl;
+    cout << "four_freq_itemset:     " << four_freq_itemset << endl << "\n";
     //******************************************************************************************************************
 }   // end Execute
 
