@@ -28,7 +28,7 @@ void Execute(int argc){
 
     L1.push_back(0);    // initialized first index with 0 as we are not using it.
     //minSupport = round(minSupp *  TID_Transactions);
-    minSupport = 2;
+    minSupport = 1;
     // Following code generates single items which have support greater than min_sup
     // compare the occurrence of the object against minSupport
 
