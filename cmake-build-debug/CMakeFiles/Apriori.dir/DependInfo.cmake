@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Github Programs/Apriori/functions.cpp" "D:/Github Programs/Apriori/cmake-build-debug/CMakeFiles/Apriori.dir/functions.cpp.obj"
   "D:/Github Programs/Apriori/main.cpp" "D:/Github Programs/Apriori/cmake-build-debug/CMakeFiles/Apriori.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

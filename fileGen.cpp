@@ -19,7 +19,7 @@ int main()
     	int m = (rand() % 3) + 2;
     	while(i++ < m) {
     		int r = (rand() % 500) + 1;
-    		
+
     		count = numbers.count(r);
     		if (count == 0){
     		    cout << r << " ";
@@ -28,7 +28,7 @@ int main()
     		else{
     		    i--;
     		}
-    		
+
     	}
     	numbers.clear();
     	i= 0;

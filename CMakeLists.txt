@@ -3,5 +3,12 @@ project(Apriori)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp apriori.h functions.h functions.cpp)
+set(SOURCE_FILES
+        apriori.cu
+        apriori.h
+        apriori.hcu
+        functions.h
+        functions.hcu
+        main.cpp)
+
 add_executable(Apriori ${SOURCE_FILES})
