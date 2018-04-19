@@ -1,5 +1,12 @@
-// Following piece of code was submitted for midterm as CPU implmentation.
-// It needs multiple changes for the data structure as well. Need to reconfigure it.
+/************************************************************************
+Author - Aman Maldar
+Simple code - parallel version of data association.
+Static value of minSupport=1. This will show all the pairs generated.
+File = 6entries.txt
+Limitation - Generates only till set of 4 pairs as of now.
+It needs multiple changes for the data structure as well. Need to reconfigure it.
+
+*************************************************************************/
 #include "apriori.h"
 #include "functions.h"
 
@@ -16,18 +23,19 @@ void Execute(int argc){
     // Following code generates single items which have support greater than min_sup
     // compare the occurrence of the object against minSupport
 
+    cout << "Support:" << minSupport << endl;
     //Generate L1 - filtered single items ? I think this should be C1, not L1.
+
     for (int i=1; i<= maxItemID; i++)
     {
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
-            cout << "1 Frequent Item is: " << i << " item_count is: " << itemIDcount[i] << endl;
+            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
         }
     }
     cout << "one_freq_itemset:      " << one_freq_itemset << endl;
-    //----------------------------------------------------------------
-
+    //******************************************************************************************************************
     //Generate L2 .  Make a pair of frequent items in L1
     for (int i=1;i <= L1.size() -1 -1; i++)     //-1 is done for eliminating first entry
     {
@@ -37,7 +45,7 @@ void Execute(int argc){
             L2.push_back(twoStruct);
         }
     }
-
+    //******************************************************************************************************************
     //Generate C2. Prune L2 . Compare against min_support and remove less frequent items.
     for(auto it = L2.begin(); it != L2.end(); it++)
     {
@@ -58,12 +66,12 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
-            cout << "2 Frequent Items are: (" <<it->a << "," << it->b << ") " << "pair_count is: " << vecLocal.size() << endl;
+            cout << "2 Frequent Items are: (" <<it->a << "," << it->b << ") " <<   "Freq is: " << vecLocal.size()<< endl;
         }
         vecLocal.clear();
     }
     cout << "two_freq_itemset:      " << two_freq_itemset << endl;
-    //---------------------------------------------------------------------
+    //******************************************************************************************************************
 
     //Generate L3
     int delta=1;
@@ -110,7 +118,7 @@ void Execute(int argc){
             threeStruct.c = it->c;
             threeStruct.freq = vecLocal2.size();
             C3.push_back(threeStruct);
-            cout << "3 Frequent Items are: (" <<it->a << "," << it->b << "," << it->c<< ") " << "pair_count is: " <<vecLocal2.size() << endl;
+            cout << "3 Frequent Items are: (" <<it->a << "," << it->b << "," << it->c<< ") " << "Freq is: " <<vecLocal2.size() << endl;
         }
         else{
             break;
@@ -119,7 +127,7 @@ void Execute(int argc){
 
     }
     cout << "three_freq_itemset:    " << three_freq_itemset << endl;
-    //--------------------------------------------------------------
+    //******************************************************************************************************************
 
     //Generate L4
     delta= 1;
@@ -141,7 +149,7 @@ void Execute(int argc){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
-                  cout << "4 Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it3->c << ") " << "pair_count is: " << endl;
+                  cout << "4 Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it3->c << ") " << "Freq is: " << endl;
 
               }
               else{
@@ -173,15 +181,17 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
-            cout << "4 Frequent Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "pair_count is: " <<vecLocal3.size() << endl;
+            cout << "4 Frequent Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it2->d << ") " << "Freq is: " <<vecLocal3.size() << endl;
 
         }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
 
     }
     cout << "four_freq_itemset:     " << four_freq_itemset << endl;
-    //-----------------------------------------------------------------------------
-}   // end initialize
+    //******************************************************************************************************************
+}   // end Execute
+
+
 
 int main(int argc, char **argv){
 
