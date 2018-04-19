@@ -9,7 +9,7 @@
 
 void parse_database(int argc){
 
-    if (argc > 1)    {        fileName = "test3.txt";    }
+    if (argc > 1)    {        fileName = "6entries.txt";    }
     else{        fileName = "D:\\Github Programs\\Apriori\\6entries.txt";    }
 
 
