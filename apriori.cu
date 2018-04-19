@@ -16,8 +16,8 @@ Data: (6entries.txt)
 
 
 *************************************************************************/
-#include "apriori.h"
-#include "functions.h"
+#include "apriori.hcu"
+#include "functions.hcu"
 
 
 double minSupp = 0.001; // 0.001;
