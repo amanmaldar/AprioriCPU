@@ -56,38 +56,38 @@ include CMakeFiles/Apriori.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Apriori.dir/flags.make
 
-CMakeFiles/Apriori.dir/main.cpp.obj: CMakeFiles/Apriori.dir/flags.make
-CMakeFiles/Apriori.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Github Programs\Apriori\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Apriori.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Apriori.dir\main.cpp.obj -c "D:\Github Programs\Apriori\main.cpp"
+CMakeFiles/Apriori.dir/apriori.cpp.obj: CMakeFiles/Apriori.dir/flags.make
+CMakeFiles/Apriori.dir/apriori.cpp.obj: ../apriori.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Github Programs\Apriori\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Apriori.dir/apriori.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Apriori.dir\apriori.cpp.obj -c "D:\Github Programs\Apriori\apriori.cpp"
 
-CMakeFiles/Apriori.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Apriori.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Github Programs\Apriori\main.cpp" > CMakeFiles\Apriori.dir\main.cpp.i
+CMakeFiles/Apriori.dir/apriori.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Apriori.dir/apriori.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Github Programs\Apriori\apriori.cpp" > CMakeFiles\Apriori.dir\apriori.cpp.i
 
-CMakeFiles/Apriori.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Apriori.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Github Programs\Apriori\main.cpp" -o CMakeFiles\Apriori.dir\main.cpp.s
+CMakeFiles/Apriori.dir/apriori.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Apriori.dir/apriori.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Github Programs\Apriori\apriori.cpp" -o CMakeFiles\Apriori.dir\apriori.cpp.s
 
-CMakeFiles/Apriori.dir/main.cpp.obj.requires:
+CMakeFiles/Apriori.dir/apriori.cpp.obj.requires:
 
-.PHONY : CMakeFiles/Apriori.dir/main.cpp.obj.requires
+.PHONY : CMakeFiles/Apriori.dir/apriori.cpp.obj.requires
 
-CMakeFiles/Apriori.dir/main.cpp.obj.provides: CMakeFiles/Apriori.dir/main.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/main.cpp.obj.provides.build
-.PHONY : CMakeFiles/Apriori.dir/main.cpp.obj.provides
+CMakeFiles/Apriori.dir/apriori.cpp.obj.provides: CMakeFiles/Apriori.dir/apriori.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/apriori.cpp.obj.provides.build
+.PHONY : CMakeFiles/Apriori.dir/apriori.cpp.obj.provides
 
-CMakeFiles/Apriori.dir/main.cpp.obj.provides.build: CMakeFiles/Apriori.dir/main.cpp.obj
+CMakeFiles/Apriori.dir/apriori.cpp.obj.provides.build: CMakeFiles/Apriori.dir/apriori.cpp.obj
 
 
 # Object files for target Apriori
 Apriori_OBJECTS = \
-"CMakeFiles/Apriori.dir/main.cpp.obj"
+"CMakeFiles/Apriori.dir/apriori.cpp.obj"
 
 # External object files for target Apriori
 Apriori_EXTERNAL_OBJECTS =
 
-Apriori.exe: CMakeFiles/Apriori.dir/main.cpp.obj
+Apriori.exe: CMakeFiles/Apriori.dir/apriori.cpp.obj
 Apriori.exe: CMakeFiles/Apriori.dir/build.make
 Apriori.exe: CMakeFiles/Apriori.dir/linklibs.rsp
 Apriori.exe: CMakeFiles/Apriori.dir/objects1.rsp
@@ -100,7 +100,7 @@ CMakeFiles/Apriori.dir/build: Apriori.exe
 
 .PHONY : CMakeFiles/Apriori.dir/build
 
-CMakeFiles/Apriori.dir/requires: CMakeFiles/Apriori.dir/main.cpp.obj.requires
+CMakeFiles/Apriori.dir/requires: CMakeFiles/Apriori.dir/apriori.cpp.obj.requires
 
 .PHONY : CMakeFiles/Apriori.dir/requires
 

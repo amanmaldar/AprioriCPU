@@ -4,7 +4,7 @@
 
 #ifndef APRIORI_FUNCTIONS_H
 #define APRIORI_FUNCTIONS_H
-#include "apriori.h"
+#include "apriori.hcu"
 
 
 void parse_database(int argc){

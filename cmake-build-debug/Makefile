@@ -122,32 +122,32 @@ Apriori/fast:
 	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/build
 .PHONY : Apriori/fast
 
-main.obj: main.cpp.obj
+apriori.obj: apriori.cpp.obj
 
-.PHONY : main.obj
+.PHONY : apriori.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+apriori.cpp.obj:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/apriori.cpp.obj
+.PHONY : apriori.cpp.obj
 
-main.i: main.cpp.i
+apriori.i: apriori.cpp.i
 
-.PHONY : main.i
+.PHONY : apriori.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/main.cpp.i
-.PHONY : main.cpp.i
+apriori.cpp.i:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/apriori.cpp.i
+.PHONY : apriori.cpp.i
 
-main.s: main.cpp.s
+apriori.s: apriori.cpp.s
 
-.PHONY : main.s
+.PHONY : apriori.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/main.cpp.s
-.PHONY : main.cpp.s
+apriori.cpp.s:
+	$(MAKE) -f CMakeFiles\Apriori.dir\build.make CMakeFiles/Apriori.dir/apriori.cpp.s
+.PHONY : apriori.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... Apriori
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... apriori.obj
+	@echo ... apriori.i
+	@echo ... apriori.s
 .PHONY : help
 
 
