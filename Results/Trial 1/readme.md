@@ -12,7 +12,7 @@ Static value of minSupport=1. This will show all the pairs generated.
 File = 6entries.txt
 Limitation - Generates only till set of 4 pairs as of now.
 
-#### Results
+#### Results-
 
 1 Frequent Item is: (1) Freq is: 3
 1 Frequent Item is: (2) Freq is: 5
