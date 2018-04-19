@@ -73,7 +73,7 @@ void Execute(int argc){
         vecLocal.clear();
     }
     cout << "two_freq_itemset:      " << two_freq_itemset << endl << "\n";
-    
+
     //******************************************************************************************************************
 
     //Generate L3
@@ -152,7 +152,7 @@ void Execute(int argc){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
-                  cout << "4 Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it3->c << ") " << "Freq is: " << endl;
+                  cout << "4 Items are: (" <<it2->a << "," << it2->b << "," << it2->c<< "," << it3->c << ") "  << endl;
 
               }
               else{
