@@ -21,7 +21,7 @@ Data: (6entries.txt)
 
 
 double minSupp = 0.001; // 0.001;
-
+/*
 __shared__ int smem[128];
 
 __global__ void prefix_scan_kernel (int *b_d, int *a_d, int n, int depth) {
@@ -51,7 +51,7 @@ while (tid < n) {
     } // end while (tid < n)
 } // end kernel function
 
-
+*/
 void Execute(int argc){
 
     parse_database(argc);
