@@ -1,12 +1,12 @@
 ### support = 1
 
-#### Project Files-
+#### Project Files
 main.cpp
 apriori.h
 functions.h
 6entries.txt
 
-#### Description - 
+#### Description 
 Simple code - parallel version of data association.
 Static value of minSupport=1. This will show all the pairs generated.
 File = 6entries.txt
