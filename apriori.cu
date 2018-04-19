@@ -58,7 +58,7 @@ void Execute(int argc){
 	
 	for(auto i=1;i<itemId_TidMapping.size();i++){
 		while(itemId_TidMapping.at(i)){
-			cout << "single element: " << itemId_TidMapping.at(i);
+			cout << "single element: " ;//<< itemId_TidMapping.at(i);
 		} cout << endl; i++;
 	}
 	
@@ -98,8 +98,8 @@ void Execute(int argc){
     //******************************************************************************************************************
     //Generate C2. Prune L2 . Compare against min_support and remove less frequent items.
  
-	int *a_d, *b_d; //device storage pointers
-    cudaMalloc ((void **) &a_d, sizeof (itemId_TidMapping));
+	vector <vector <int>> *a_d; //device storage pointers
+        cudaMalloc ((void **) &a_d, sizeof (itemId_TidMapping));
 	cudaMemcpy (a_d, itemId_TidMapping, sizeof (itemId_TidMapping), cudaMemcpyHostToDevice);
 
 	//prefix_scan_kernel <<< numberOfBlocks,threadsInBlock >>> (a_d,8);
