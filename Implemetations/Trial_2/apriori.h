@@ -67,7 +67,7 @@ void generateL3(vector <ThreeStruct>  C3);
 
 //----------------varibles---------------------
 
-int TID_Transactions = 1;
+int TID_Transactions = 0;
 
 double minSupport;
 double minConfidence;
@@ -78,18 +78,13 @@ int two_freq_itemset=0;
 int three_freq_itemset=0;
 int four_freq_itemset=0;
 
-#define maxItemID 8
-#define maxTransactions 6
-//int maxItemID = 8;
+int maxItemID = 9;
 
 string fileName;
-int totalItems;
 
 // itemIDcount is used to store number of times particular itemID appears in dataset.
 // It is used to determine support for single elements. itemID will go from 1 to maxItemID
 vector <int> itemIDcount;
-//int itemIDcount[maxItemID];
-
 
 // A single vector is associated with every itemID.
 // That vector stores the TID [Transaction ID] in which particular itemID appears.

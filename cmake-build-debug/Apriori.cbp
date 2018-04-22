@@ -82,22 +82,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/Github Programs/Apriori/apriori.cu">
-			<Option target="Apriori"/>
-		</Unit>
-		<Unit filename="D:/Github Programs/Apriori/apriori.h">
+		<Unit filename="D:/Github Programs/Apriori/apriori.cpp">
 			<Option target="Apriori"/>
 		</Unit>
 		<Unit filename="D:/Github Programs/Apriori/apriori.hcu">
 			<Option target="Apriori"/>
 		</Unit>
-		<Unit filename="D:/Github Programs/Apriori/functions.h">
-			<Option target="Apriori"/>
-		</Unit>
 		<Unit filename="D:/Github Programs/Apriori/functions.hcu">
-			<Option target="Apriori"/>
-		</Unit>
-		<Unit filename="D:/Github Programs/Apriori/main.cpp">
 			<Option target="Apriori"/>
 		</Unit>
 		<Unit filename="D:/Github Programs/Apriori/CMakeLists.txt">
