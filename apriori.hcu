@@ -83,6 +83,7 @@ int four_freq_itemset=0;
 //int maxItemID = 8;
 
 string fileName;
+int totalItems;
 
 // itemIDcount is used to store number of times particular itemID appears in dataset.
 // It is used to determine support for single elements. itemID will go from 1 to maxItemID

@@ -29,6 +29,9 @@ void Execute(int argc){
     //return;
 	vector <int> globalDataset;     // convert itemId_TidMapping into long array
     vector <int> globalDatasetThreadIndex;
+    //int *globalDatasetCpu = (int *) malloc (sizeof(int)* totalItems);
+    int *globalDatasetCpu = (int *) malloc (sizeof(int)* 35);
+
     int k =0;                   // global pointer for globalMap
     //globalDatasetThreadIndex.push_back(k);
 	for(int i=0;i<=maxItemID;i++){
@@ -38,23 +41,31 @@ void Execute(int argc){
         //tmp11 = {1,2,3};
         for(int j=1;j<tmp11.size();j++){ // last item should be inclusive, first element is excluded
             globalDataset.push_back(tmp11[j]);
-			k++;
+            globalDatasetCpu[k] = tmp11[j];
+            k++;
 		}
 
         globalDataset.push_back(-1);    // seperate mappings by -1
+        globalDatasetCpu[k] = -1;
         k++;
        // globalDatasetThreadIndex.push_back(k);
 	}
 	cout << " Printing itemId_TidMapping as array: " << endl;
-	for(int i =0;i<globalDataset.size();i++){
-		cout << globalDataset[i] << " " ;
-	}cout << endl;
+    for(int i =0;i<globalDataset.size();i++){
+        cout << globalDataset[i] << " " ;
+    }cout << endl;
+    cout << " Printing itemId_TidMapping copy: " << totalItems << endl;
+    for(int i =0;i<totalItems;i++){
+        cout << globalDatasetCpu[i] << " " ;
+    }cout << endl;
+
+    return;
     cout << " Printing starting indexes " << endl;
     for(int i =0;i<globalDatasetThreadIndex.size();i++){
         cout << globalDatasetThreadIndex[i] << " " ;
     }cout << endl;
-	
-	
+
+
 	//int numberOfBlocks = 1;
 	//int threadsInBlock = 100;
 	  
@@ -72,10 +83,10 @@ void Execute(int argc){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
-            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
+            //cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
         }
     }
-    cout << "one_freq_itemset:      " << one_freq_itemset << endl << "\n";
+   // cout << "one_freq_itemset:      " << one_freq_itemset << endl << "\n";
     //******************************************************************************************************************
     //Generate L2 .  Make a pair of frequent items in L1
     for (int i=0;i <= L1.size() -1 -1; i++)     //-1 is done for eliminating first entry
@@ -84,21 +95,13 @@ void Execute(int argc){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
-            cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
+            //cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
 
         }
     }
     //******************************************************************************************************************
-    //Generate C2. Prune L2 . Compare against min_support and remove less frequent items.
- 
-	//vector <int> *globalDataset_device; //device storage pointers
-    //cudaMalloc ((void **) &globalDataset_device, sizeof (globalDataset));
-	//cudaMemcpy (a_d, itemId_TidMapping, sizeof (itemId_TidMapping), cudaMemcpyHostToDevice);
 
-	//prefix_scan_kernel <<< numberOfBlocks,threadsInBlock >>> (a_d,8);
-
- 
-    cout << "two_freq_itemset:      " << two_freq_itemset << endl << "\n";
+    //cout << "two_freq_itemset:      " << two_freq_itemset << endl << "\n";
 
     //******************************************************************************************************************
 
