@@ -10,7 +10,7 @@ Data: (6entries.txt)
 2 3 4
 1 2 3 4 5
 4 5 6 7
-1 2
+0 2
 1 2 3 4
 2 3 5 7 8
 
@@ -35,7 +35,7 @@ void Execute(int argc){
     cout << "\n Support:" << minSupport << endl << "\n";
     //Generate L1 - filtered single items ? I think this should be C1, not L1.
 
-    for (int i=1; i<= maxItemID; i++)
+    for (int i=0; i<= maxItemID; i++)
     {
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
