@@ -123,7 +123,7 @@ void Execute(int argc){
                               std::back_inserter(vecLocal2));
 
 
-        if (vecLocal2.size() >= minSupport) {
+        if (vecLocal2.size() >= 0) {
             three_freq_itemset++;
             threeStruct.a = it->a;
             threeStruct.b = it->b;
@@ -139,6 +139,8 @@ void Execute(int argc){
 
     }
     cout << "three_freq_itemset:    " << three_freq_itemset << endl << "\n";
+    
+    return ;
     //******************************************************************************************************************
 
     //Generate L4
