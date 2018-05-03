@@ -123,7 +123,7 @@ void Execute(int argc){
                               std::back_inserter(vecLocal2));
 
 
-        if (vecLocal2.size() >= 0) {
+        if (vecLocal2.size() >= 1) {
             three_freq_itemset++;
             threeStruct.a = it->a;
             threeStruct.b = it->b;
