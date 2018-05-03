@@ -138,7 +138,7 @@ void Execute(int argc){
     }
     cout << "three_freq_itemset:    " << three_freq_itemset << endl << "\n";
     
-    return ;
+    //return ;
     //******************************************************************************************************************
 
     //Generate L4
