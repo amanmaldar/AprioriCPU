@@ -132,9 +132,7 @@ void Execute(int argc){
             C3.push_back(threeStruct);
             cout << "3 Frequent Items are: (" <<it->a << "," << it->b << "," << it->c<< ") " << "Freq is: " <<vecLocal2.size() << endl;
         }
-        else{
-            break;
-        }
+
         vecLocal1.clear();  vecLocal2.clear();
 
     }
