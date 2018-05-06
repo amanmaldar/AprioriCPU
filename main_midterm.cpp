@@ -4,7 +4,7 @@
 #include "functions.h"
 
 
-double minSupp = 0.001; // 0.001;
+//double minSupp = 0.001; // 0.001;
 
 void Execute(int argc){
 
@@ -17,7 +17,7 @@ void Execute(int argc){
     // compare the occurrence of the object against minSupport
 
     //Generate L1
-    for (int i=1; i<= maxItemID; i++)
+    for (int i=0; i<= maxItemID; i++)
     {
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
