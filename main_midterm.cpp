@@ -22,6 +22,8 @@ void Execute(int argc){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
+            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
+
         }
     }
     cout << "one_freq_itemset:      " << one_freq_itemset << endl;
@@ -34,6 +36,8 @@ void Execute(int argc){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
+            cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
+
         }
     }
 
@@ -57,6 +61,8 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
+    cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
+
         }
         vecLocal.clear();
     }
@@ -80,6 +86,8 @@ void Execute(int argc){
                     threeStruct.c = it1->b;
                     threeStruct.freq = 0;
                     L3.push_back(threeStruct);
+                            cout << "3 Items are: (" <<it->a<< "," << it->b<< "," << it1->b << ") " << endl;
+
             }
         }
     }
@@ -105,6 +113,8 @@ void Execute(int argc){
             threeStruct.c =it->c;
             threeStruct.a = vecLocal2.size();
             C3.push_back(threeStruct);
+            cout << "3 Frequent Items are: (" <<it->a<< "," << it->b  << "," << it->c << ") Freq is:" <<  vecLocal2.size() << endl;
+
         }
         vecLocal1.clear();  vecLocal2.clear();
 
@@ -132,6 +142,9 @@ void Execute(int argc){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
+                   cout << "4 Items are: (" <<it2->a<< "," << it2->b<< "," << it12->b << "," << it3->c << ") " << endl;
+
+                  
               }
         }
     }
@@ -159,6 +172,8 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
+    cout << "4 Frequent Items are: (" <<it2->a<< "," << it2->b  << "," << it2->c << "," << it2->d << ") Freq is:" << vecLocal3.size() << endl;
+
             }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
 
