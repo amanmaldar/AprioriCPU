@@ -149,7 +149,7 @@ void Execute(int argc){
               }
         }
     }
-    return ;
+    //return ;
     // Generate C4. Prune L4
     for(auto it2 = L4.begin(); it2 != L4.end(); it2++) {
         vector<int> vecLocal1, vecLocal2,vecLocal3;
