@@ -111,7 +111,7 @@ void Execute(int argc){
             threeStruct.a = it->a;
             threeStruct.b = it->b;
             threeStruct.c =it->c;
-            threeStruct.a = vecLocal2.size();
+            threeStruct.freq = vecLocal2.size();
             C3.push_back(threeStruct);
             cout << "3 Frequent Items are: (" <<it->a<< "," << it->b  << "," << it->c << ") Freq is:" <<  vecLocal2.size() << endl;
 
@@ -133,7 +133,7 @@ void Execute(int argc){
 
         c = it2->a;
         d = it2->b;
-        cout << "testing " << c << d << endl;;
+        //cout << "testing " << c << d << endl;;
 
         for (it3 = it3; it3 != C3.end(); it3++) {  //iterating over same set.
               if (c == it3->a && d == it3->b) {
