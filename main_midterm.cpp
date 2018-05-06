@@ -11,7 +11,8 @@ void Execute(int argc){
     parse_database(argc);
 
     L1.push_back(0);    // initialized first index with 0 as we are not using it.
-    minSupport = round(minSupp *  TID_Transactions);
+    //minSupport = round(minSupp *  TID_Transactions);
+    minSupport = 1;
     // Following code generates single items which have support greater than min_sup
     // compare the occurrence of the object against minSupport
 
