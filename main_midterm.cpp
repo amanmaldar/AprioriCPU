@@ -22,7 +22,7 @@ void Execute(int argc){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
-            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
+            //cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
 
         }
     }
@@ -36,7 +36,7 @@ void Execute(int argc){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
-            cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
+            //cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
 
         }
     }
@@ -61,12 +61,12 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
-    cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
+   // cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
 
         }
         vecLocal.clear();
     }
-    cout << "two_freq_itemset:      " << two_freq_itemset << endl;
+    //cout << "two_freq_itemset:      " << two_freq_itemset << endl;
     //---------------------------------------------------------------------
 
     //Generate L3
@@ -133,6 +133,7 @@ void Execute(int argc){
 
         c = it2->a;
         d = it2->b;
+        cout << "testing " << c << d << endl;;
 
         for (it3 = it3; it3 != C3.end(); it3++) {  //iterating over same set.
               if (c == it3->a && d == it3->b) {
@@ -148,7 +149,7 @@ void Execute(int argc){
               }
         }
     }
-
+    return ;
     // Generate C4. Prune L4
     for(auto it2 = L4.begin(); it2 != L4.end(); it2++) {
         vector<int> vecLocal1, vecLocal2,vecLocal3;
