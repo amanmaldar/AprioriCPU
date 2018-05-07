@@ -25,7 +25,7 @@ void Execute(){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
            // if (printing == 1)
-            //cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
+            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
 
         }
     }
