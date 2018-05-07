@@ -7,10 +7,9 @@
 #include "apriori.hcu"
 
 
-void parse_database(int argc){
+void parse_database(){
 
-    if (argc > 1)    {        fileName = "6entries.txt";    }
-    else{        fileName = "D:\\Github Programs\\Apriori\\6entries.txt";    }
+    fileName = "6entries.txt"; 
 
 
     ifstream infile(fileName);
