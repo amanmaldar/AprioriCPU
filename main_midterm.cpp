@@ -25,7 +25,7 @@ void Execute(){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
             if (printing == 1)
-            cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
+            //cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
 
         }
     }
@@ -40,7 +40,7 @@ void Execute(){
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
              if (printing == 1)
-            cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
+            //cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
 
         }
     }
@@ -66,7 +66,7 @@ void Execute(){
             C2.push_back(twoStruct);
             two_freq_itemset++;
              if (printing == 1)
-    cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
+   // cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
 
         }
         vecLocal.clear();
@@ -132,6 +132,7 @@ void Execute(){
     cout << "three_freq_itemset:    " << three_freq_itemset << endl;
     //--------------------------------------------------------------
 
+	return ;
     //Generate L4
     delta= 1;
 threads_cpu = 0;
@@ -155,13 +156,13 @@ threads_cpu = 0;
                   L4.push_back(fourStruct);
 		      threads_cpu++;
 		    if (printing == 1)
-                   cout << "4 Items are: (" <<it2->a<< "," << it2->b << "," << it2->c << "," << it3->c << ") " << endl;
+                //   cout << "4 Items are: (" <<it2->a<< "," << it2->b << "," << it2->c << "," << it3->c << ") " << endl;
 
                   
               }
         }
     }
-		cout << "testing 4 pairs: " <<  threads_cpu;
+	//	cout << "testing 4 pairs: " <<  threads_cpu;
 
     //return ;
     // Generate C4. Prune L4
@@ -188,7 +189,7 @@ threads_cpu = 0;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
              if (printing == 1)
-    cout << "4 Frequent Items are: (" <<it2->a<< "," << it2->b  << "," << it2->c << "," << it2->d << ") Freq is:" << vecLocal3.size() << endl;
+   // cout << "4 Frequent Items are: (" <<it2->a<< "," << it2->b  << "," << it2->c << "," << it2->d << ") Freq is:" << vecLocal3.size() << endl;
 
             }
             vecLocal1.clear();  vecLocal2.clear();  vecLocal3.clear();
