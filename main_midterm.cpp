@@ -99,7 +99,7 @@ void Execute(){
             }
         }
     }
-	cout << "testing 3 pairs: " <<  threads_cpu;
+	//cout << "testing 3 pairs: " <<  threads_cpu;
     // GENERATE C3 . Prune L3.
 
     for (auto it = L3.begin(); it != L3.end(); it++ ) {
