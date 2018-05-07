@@ -76,7 +76,7 @@ int three_freq_itemset=0;
 int four_freq_itemset=0;
 
 #define maxItemID 200 //8
-#define maxTransactions 200 //6
+#define maxTransactions 1000 //6
 //int maxItemID = 8;
 
 string fileName;
