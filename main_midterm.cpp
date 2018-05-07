@@ -24,7 +24,7 @@ void Execute(){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
-            if (printing == 1)
+           // if (printing == 1)
             //cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
 
         }
@@ -39,7 +39,7 @@ void Execute(){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
-             if (printing == 1)
+            // if (printing == 1)
             //cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
 
         }
@@ -65,7 +65,7 @@ void Execute(){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
-             if (printing == 1)
+            // if (printing == 1)
    // cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
 
         }
@@ -155,7 +155,7 @@ threads_cpu = 0;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
 		      threads_cpu++;
-		    if (printing == 1)
+		   // if (printing == 1)
                 //   cout << "4 Items are: (" <<it2->a<< "," << it2->b << "," << it2->c << "," << it3->c << ") " << endl;
 
                   
@@ -188,7 +188,7 @@ threads_cpu = 0;
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
-             if (printing == 1)
+           //  if (printing == 1)
    // cout << "4 Frequent Items are: (" <<it2->a<< "," << it2->b  << "," << it2->c << "," << it2->d << ") Freq is:" << vecLocal3.size() << endl;
 
             }
