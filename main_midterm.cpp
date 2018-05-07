@@ -66,7 +66,7 @@ void Execute(){
             C2.push_back(twoStruct);
             two_freq_itemset++;
             // if (printing == 1)
-   // cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
+    cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
 
         }
         vecLocal.clear();
