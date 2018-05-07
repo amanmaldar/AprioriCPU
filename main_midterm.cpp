@@ -134,7 +134,7 @@ void Execute(){
 
     //Generate L4
     delta= 1;
-
+threads_cpu = 0;
     for(auto it2 = C3.begin(); it2 != C3.end(); it2++,delta++)
     {
         int c,d;
@@ -153,6 +153,7 @@ void Execute(){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
+		      threads_cpu++;
 		    if (printing == 1)
                    cout << "4 Items are: (" <<it2->a<< "," << it2->b << "," << it2->c << "," << it3->c << ") " << endl;
 
@@ -160,6 +161,8 @@ void Execute(){
               }
         }
     }
+		cout << "testing 4 pairs: " <<  threads_cpu;
+
     //return ;
     // Generate C4. Prune L4
     for(auto it2 = L4.begin(); it2 != L4.end(); it2++) {
