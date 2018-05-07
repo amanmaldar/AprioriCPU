@@ -151,6 +151,7 @@ void Execute(){
                   fourStruct.d = it3->c;
                   fourStruct.freq =0;
                   L4.push_back(fourStruct);
+		    if (printing == 1)
                    cout << "4 Items are: (" <<it2->a<< "," << it2->b << "," << it2->c << "," << it3->c << ") " << endl;
 
                   
