@@ -76,6 +76,7 @@ void Execute(){
 
     //Generate L3
     int delta=1;
+	int threads_cpu= 0;
     // FOLLOWING 2 FOR LOOPS GENERATE SET OF 3 ITEMS
 
     for (auto it = C2.begin(); it != C2.end(); it++,delta++ ) {
@@ -91,13 +92,14 @@ void Execute(){
                     threeStruct.c = it1->b;
                     threeStruct.freq = 0;
                     L3.push_back(threeStruct);
+		    threads_cpu++;
                  if (printing == 1)
                             cout << "3 Items are: (" <<it->a<< "," << it->b<< "," << it1->b << ") " << endl;
 
             }
         }
     }
-
+	cout << "testing 3 pairs: " <<  *threads_cpu;
     // GENERATE C3 . Prune L3.
 
     for (auto it = L3.begin(); it != L3.end(); it++ ) {
