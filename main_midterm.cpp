@@ -5,10 +5,12 @@
 
 
 //double minSupp = 0.001; // 0.001;
+int printing = 0;
+void Execute(){
 
-void Execute(int argc){
 
-    parse_database(argc);
+    
+    parse_database();
 
     L1.push_back(0);    // initialized first index with 0 as we are not using it.
     //minSupport = round(minSupp *  TID_Transactions);
@@ -22,6 +24,7 @@ void Execute(int argc){
         if(itemIDcount[i] >= minSupport){
             L1.push_back(i);     //push TID into frequentItem
             one_freq_itemset++;
+            if (printing == 1)
             cout << "1 Frequent Item is: (" << i << ") Freq is: " << itemIDcount[i] << endl;
 
         }
@@ -36,6 +39,7 @@ void Execute(int argc){
             twoStruct.a = L1[i];
             twoStruct.b = L1[j];
             L2.push_back(twoStruct);
+             if (printing == 1)
             cout << "2 Items are: (" <<L1[i]<< "," << L1[j] << ") " << endl;
 
         }
@@ -61,6 +65,7 @@ void Execute(int argc){
             twoStruct.freq = vecLocal.size();
             C2.push_back(twoStruct);
             two_freq_itemset++;
+             if (printing == 1)
     cout << "2 Frequent Items are: (" <<fir<< "," << sec << ") Freq is:" << vecLocal.size() << endl;
 
         }
@@ -86,6 +91,7 @@ void Execute(int argc){
                     threeStruct.c = it1->b;
                     threeStruct.freq = 0;
                     L3.push_back(threeStruct);
+                 if (printing == 1)
                             cout << "3 Items are: (" <<it->a<< "," << it->b<< "," << it1->b << ") " << endl;
 
             }
@@ -113,12 +119,14 @@ void Execute(int argc){
             threeStruct.c =it->c;
             threeStruct.freq = vecLocal2.size();
             C3.push_back(threeStruct);
+             if (printing == 1)
             cout << "3 Frequent Items are: (" <<it->a<< "," << it->b  << "," << it->c << ") Freq is:" <<  vecLocal2.size() << endl;
 
         }
         vecLocal1.clear();  vecLocal2.clear();
 
     }
+    
     cout << "three_freq_itemset:    " << three_freq_itemset << endl;
     //--------------------------------------------------------------
 
@@ -173,6 +181,7 @@ void Execute(int argc){
             fourStruct.d = it2->d;
             fourStruct.freq = vecLocal3.size();
             C4.push_back(fourStruct);
+             if (printing == 1)
     cout << "4 Frequent Items are: (" <<it2->a<< "," << it2->b  << "," << it2->c << "," << it2->d << ") Freq is:" << vecLocal3.size() << endl;
 
             }
@@ -185,9 +194,11 @@ void Execute(int argc){
 
 int main(int argc, char **argv){
 
+        int t1 = (int) *argv[1];
+	printing = t1 - 48;
     auto start = chrono::high_resolution_clock::now();
 
-    Execute(argc);
+    Execute();
 
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> el = end - start;
